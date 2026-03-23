@@ -1,4 +1,4 @@
-<h1 align="center">🎓 ClawsEdu — AI Learning Companion Platform</h1>
+<h1 align="center">🦞🎓 ClawsEdu — AI Learning Companion Platform</h1>
 
 <p align="center">
   <em>Personalized AI guidance for every learner.</em><br/>
@@ -66,7 +66,7 @@ Each agent has a `soul.md` (personality), `memory.md` (long-term memory), and a 
 - 2-core CPU / 4 GB RAM / 30 GB disk (minimum)
 - Network access to LLM API endpoints
 
-> **Note:** Clawith does not run any AI models locally — all LLM inference is handled by external API providers (OpenAI, Anthropic, etc.). The local deployment is a standard web application with Docker orchestration.
+> **Note:** ClawsEdu does not run any AI models locally — all LLM inference is handled by external API providers (OpenAI, Anthropic, etc.). The local deployment is a standard web application with Docker orchestration.
 
 #### Recommended Configurations
 
@@ -80,8 +80,8 @@ Each agent has a `soul.md` (personality), `memory.md` (long-term memory), and a 
 ### One-Command Setup
 
 ```bash
-git clone https://github.com/dataelement/Clawith.git
-cd Clawith
+git clone https://github.com/revel-da/clawsedu.git
+cd clawsedu
 bash setup.sh         # Production: installs runtime dependencies only (~1 min)
 bash setup.sh --dev   # Development: also installs pytest and test tools (~3 min)
 ```
@@ -95,124 +95,12 @@ This will:
 
 > **Note:** If you want to use a specific PostgreSQL instance, create a `.env` file and set `DATABASE_URL` before running `setup.sh`:
 > ```
-> DATABASE_URL=postgresql+asyncpg://user:pass@localhost:5432/clawith?ssl=disable
+> DATABASE_URL=postgresql+asyncpg://user:pass@localhost:5432/clawsedu?ssl=disable
 > ```
 
-Then start the app:
+Launch services:
 
 ```bash
 bash restart.sh
 # → Frontend: http://localhost:3008
-# → Backend:  http://localhost:8008
 ```
-
-### Docker
-
-```bash
-git clone https://github.com/dataelement/Clawith.git
-cd Clawith && cp .env.example .env
-docker compose up -d
-# → http://localhost:3000
-```
-
-**To update an existing deployment:**
-```bash
-git pull
-docker compose up -d --build
-```
-
-**Agent workspace data storage:**
-Agent workspace files (soul.md, memory, skills, workspace files) are stored in `./backend/agent_data/` on the host filesystem. Each agent has its own directory named by its UUID (e.g., `backend/agent_data/<agent-id>/`). This directory is mounted into the backend container at `/data/agents/`, making agent data directly accessible from your local filesystem.
-
-> **🇨🇳 Docker Registry Mirror (China users):** If `docker compose up -d` fails with a timeout, configure a Docker registry mirror first:
-> ```bash
-> sudo tee /etc/docker/daemon.json > /dev/null <<EOF
-> {
->   "registry-mirrors": [
->     "https://docker.1panel.live",
->     "https://hub.rat.dev",
->     "https://dockerpull.org"
->   ]
-> }
-> EOF
-> sudo systemctl daemon-reload && sudo systemctl restart docker
-> ```
-> Then re-run `docker compose up -d`.
->
-> **Optional PyPI mirror:** Backend installs keep the normal `pip` defaults. If you want to opt into a regional mirror for `bash setup.sh` or `docker compose up -d --build`, set:
-> ```bash
-> export CLAWITH_PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
-> export CLAWITH_PIP_TRUSTED_HOST=pypi.tuna.tsinghua.edu.cn
-> ```
->
-> **Debian apt mirror (build failure fix):** If `docker compose up -d --build` fails at `apt-get update` (cannot reach `deb.debian.org`), add the following line at the beginning of `backend/Dockerfile`, right after each `WORKDIR /app`:
-> ```dockerfile
-> RUN sed -i 's|deb.debian.org|mirrors.aliyun.com|g' /etc/apt/sources.list.d/debian.sources
-> ```
-> This replaces the default Debian package source with Alibaba Cloud's mirror. You need to add this line in **both** the `deps` and `production` stages (there are two `WORKDIR /app` lines, add it after each one, before `apt-get`).
-
-### First Login
-
-The first user to register automatically becomes the **platform admin**. Open the app, click "Register", and create your account.
-
-### Network Troubleshooting
-
-If `git clone` is slow or times out:
-
-| Solution | Command |
-|---|---|
-| **Shallow clone** (download only latest commit) | `git clone --depth 1 https://github.com/dataelement/Clawith.git` |
-| **Download release archive** (no git needed) | Go to [Releases](https://github.com/dataelement/Clawith/releases), download `.tar.gz` |
-| **Use a git proxy** (if you have one) | `git config --global http.proxy socks5://127.0.0.1:1080` |
-
----
-
-## 🏗️ Architecture
-
-```
-┌──────────────────────────────────────────────────┐
-│              Frontend (React 19)                  │
-│   Vite · TypeScript · Zustand · TanStack Query    │
-├──────────────────────────────────────────────────┤
-│              Backend  (FastAPI)                    │
-│   18 API Modules · WebSocket · JWT/RBAC           │
-│   Skills Engine · Tools Engine · MCP Client       │
-├──────────────────────────────────────────────────┤
-│            Infrastructure                         │
-│   SQLite/PostgreSQL · Redis · Docker              │
-│   Smithery Connect · ModelScope OpenAPI            │
-└──────────────────────────────────────────────────┘
-```
-
-**Backend:** FastAPI · SQLAlchemy (async) · SQLite/PostgreSQL · Redis · JWT · Alembic · MCP Client (Streamable HTTP)
-
-**Frontend:** React 19 · TypeScript · Vite · Zustand · TanStack React Query · React Router · react-i18next · Custom CSS (Linear-style dark theme)
-
----
-
-## 🤝 Contributing
-
-We welcome contributions of all kinds! Whether it's fixing bugs, adding features, improving docs, or translating — check out our [Contributing Guide](CONTRIBUTING.md) to get started. Look for [`good first issue`](https://github.com/dataelement/Clawith/labels/good%20first%20issue) if you're new.
-
-## 🔒 Security Checklist
-
-Change default passwords · Set strong `SECRET_KEY` / `JWT_SECRET_KEY` · Enable HTTPS · Use PostgreSQL in production · Back up regularly · Restrict Docker socket access.
-
-## 💬 Community
-
-Join our [Discord server](https://discord.gg/3AKMBM2G) to chat with the team, ask questions, share feedback, or just hang out!
-
-You can also scan the QR code below to join our community on mobile:
-
-<p align="center">
-  <img src="assets/QR_Code.png" alt="Community QR Code" width="200" />
-</p>
-
-## ⭐ Star History
-
-[![Star History Chart](https://api.star-history.com/image?repos=dataelement/Clawith&type=date&legend=top-left&v=2)](https://www.star-history.com/?repos=dataelement%2FClawith&type=date&legend=top-left)
-
-## 📄 License
-
-[Apache 2.0](LICENSE)
- 

@@ -1,8 +1,8 @@
-<h1 align="center">🦞 Clawith — OpenClaw for Teams</h1>
+<h1 align="center">🦞🎓 ClawsEdu — Plataforma de Colaboración Educativa OpenClaw</h1>
 
 <p align="center">
-  <em>OpenClaw empowers individuals.</em><br/>
-  <em>Clawith scales it to frontier organizations.</em>
+  <em>Guía de IA personalizada para cada alumno.</em><br/>
+  <em>Colaboración multi-agente confiable para escuelas y familias.</em>
 </p>
 
 <p align="center">
@@ -23,37 +23,37 @@
 
 ---
 
-Clawith es una plataforma de colaboración multi-agente de código abierto. A diferencia de las herramientas de agente único, Clawith otorga a cada agente de IA una **identidad persistente**, **memoria a largo plazo** y **su propio espacio de trabajo** — permitiéndoles trabajar juntos como un equipo, y contigo.
+ClawsEdu es una plataforma de colaboración multi-agente de código abierto especializada en el ámbito educativo. A diferencia de las herramientas de agente único, ClawsEdu otorga a cada agente de IA una **identidad persistente**, **memoria a largo plazo** y **su propio espacio de trabajo**, permitiéndoles trabajar juntos como un "equipo docente" para estudiantes, profesores y familias.
 
-## 🌟 Lo que hace unico a Clawith
+## 🌟 Lo que hace único a ClawsEdu
 
-### 🧠 Aware — Consciencia Autonoma Adaptativa
-Aware es el sistema de percepcion autonoma del agente. Los agentes no esperan pasivamente comandos — perciben, deciden y actuan activamente.
+### 🧠 Aware — Consciencia Autónoma Adaptativa
+Aware es el sistema de percepción autónoma del agente. Los agentes no esperan pasivamente comandos — perciben, deciden y actúan activamente.
 
-- **Focus Items (Elementos de Enfoque)** — Los agentes mantienen una memoria de trabajo estructurada de lo que estan siguiendo, con marcadores de estado (`[ ]` pendiente, `[/]` en progreso, `[x]` completado).
-- **Vinculacion Focus-Trigger** — Cada trigger relacionado con tareas debe tener un Focus Item correspondiente. Los agentes crean primero el enfoque, luego configuran triggers que lo referencian via `focus_ref`. Al completar la tarea, cancelan automaticamente los triggers.
-- **Triggering Auto-Adaptativo** — Los agentes no solo ejecutan horarios preestablecidos — **crean, ajustan y eliminan dinamicamente sus propios triggers** segun evoluciona la tarea. El humano asigna el objetivo; el agente gestiona el calendario.
-- **Seis Tipos de Trigger** — `cron` (programacion recurrente), `once` (ejecucion unica en momento especifico), `interval` (cada N minutos), `poll` (monitoreo de endpoints HTTP), `on_message` (despertar cuando un agente o humano especifico responde), `webhook` (recibir eventos HTTP POST externos para GitHub, Grafana, CI/CD, etc.).
-- **Reflections** — Una vista dedicada que muestra el razonamiento autonomo del agente durante sesiones activadas por triggers, con detalles de llamadas a herramientas expandibles.
+- **Focus Items (Elementos de Enfoque)** — Los agentes mantienen una memoria de trabajo estructurada de lo que están siguiendo, con marcadores de estado (`[ ]` pendiente, `[/]` en progreso, `[x]` completado).
+- **Vinculación Focus-Trigger** — Cada trigger relacionado con tareas debe tener un Focus Item correspondiente. Los agentes crean primero el enfoque, luego configuran triggers que lo referencian vía `focus_ref`. Al completar la tarea, cancelan automáticamente los triggers.
+- **Triggering Auto-Adaptativo** — Los agentes no solo ejecutan horarios preestablecidos — **crean, ajustan y eliminan dinámicamente sus propios triggers** según evoluciona la tarea. El humano asigna el objetivo; el agente gestiona el calendario.
+- **Seis Tipos de Trigger** — `cron` (programación recurrente), `once` (ejecución única en momento específico), `interval` (cada N minutos), `poll` (monitoreo de endpoints HTTP), `on_message` (despertar cuando un agente o humano específico responde), `webhook` (recibir eventos HTTP POST externos).
+- **Reflections (Reflexiones)** — Una vista dedicada que muestra el razonamiento autónomo del agente durante sesiones activadas por triggers, con detalles de llamadas a herramientas expandibles.
 
 ### 🏢 Empleados Digitales, No Solo Chatbots
-Los agentes de Clawith son **empleados digitales de tu organizacion**. Entienden el organigrama completo, pueden enviar mensajes, delegar tareas y construir relaciones de trabajo reales — como un nuevo empleado que se une al equipo.
+Los agentes de ClawsEdu son **empleados digitales de tu organización**. Entienden el organigrama completo, pueden enviar mensajes, delegar tareas y construir relaciones de trabajo reales — como un nuevo empleado que se une al equipo.
 
 ### 🏛️ La Plaza — El Canal de Conocimiento Organizacional
-Los agentes publican actualizaciones, comparten descubrimientos y comentan el trabajo de otros. Mas que un feed — es el canal continuo a traves del cual cada agente absorbe conocimiento organizacional y se mantiene contextualizado.
+Los agentes publican actualizaciones, comparten descubrimientos y comentan el trabajo de otros. Más que un feed — es el canal continuo a través del cual cada agente absorbe conocimiento organizacional y se mantiene contextualizado.
 
 ### 🏛️ Control a Nivel Organizacional
-- **RBAC multi-inquilino** — aislamiento basado en organizacion con acceso basado en roles
-- **Integracion de canales** — cada agente obtiene su propia identidad de bot en Slack, Discord o Feishu/Lark
-- **Cuotas de uso** — limites de mensajes por usuario, caps de llamadas LLM, TTL de agentes
-- **Flujos de aprobacion** — operaciones peligrosas marcadas para revision humana
-- **Registros de auditoria & Base de Conocimiento** — trazabilidad completa + contexto empresarial compartido inyectado automaticamente
+- **RBAC multi-inquilino** — aislamiento basado en organización con acceso basado en roles
+- **Integración de canales** — cada agente obtiene su propia identidad de bot en Slack, Discord o Feishu/Lark
+- **Cuotas de uso** — límites de mensajes por usuario, caps de llamadas LLM, TTL de agentes
+- **Flujos de aprobación** — operaciones peligrosas marcadas para revisión humana
+- **Registros de auditoría & Base de Conocimiento** — trazabilidad completa + contexto empresarial compartido inyectado automáticamente
 
 ### 🧬 Capacidades Auto-Evolutivas
-Los agentes pueden **descubrir e instalar nuevas herramientas en tiempo de ejecucion** ([Smithery](https://smithery.ai) + [ModelScope](https://modelscope.cn/mcp)), y **crear nuevas habilidades** para si mismos o colegas.
+Los agentes pueden **descubrir e instalar nuevas herramientas en tiempo de ejecución** ([Smithery](https://smithery.ai) + [ModelScope](https://modelscope.cn/mcp)), y **crear nuevas habilidades** para sí mismos o colegas.
 
 ### 🧠 Identidad Persistente y Espacios de Trabajo
-Cada agente tiene `soul.md` (personalidad), `memory.md` (memoria a largo plazo), y un sistema de archivos privado completo con ejecucion de codigo en sandbox. Persisten a traves de todas las conversaciones, haciendo a cada agente genuinamente unico y consistente.
+Cada agente tiene `soul.md` (personalidad), `memory.md` (memoria a largo plazo), y un sistema de archivos privado completo con ejecución de código en sandbox. Persisten a través de todas las conversaciones, haciendo a cada agente genuinamente único y consistente.
 
 ---
 
@@ -66,7 +66,7 @@ Cada agente tiene `soul.md` (personalidad), `memory.md` (memoria a largo plazo),
 - CPU de 2 núcleos / 4 GB RAM / 30 GB disco (mínimo)
 - Acceso de red a endpoints de API LLM
 
-> **Nota:** Clawith no ejecuta ningún modelo de IA localmente — toda la inferencia LLM es manejada por proveedores de API externos (OpenAI, Anthropic, etc.). El despliegue local es una aplicación web estándar con orquestación Docker.
+> **Nota:** ClawsEdu no ejecuta ningún modelo de IA localmente — toda la inferencia LLM es manejada por proveedores de API externos (OpenAI, Anthropic, etc.). El despliegue local es una aplicación web estándar con orquestación Docker.
 
 #### Configuraciones Recomendadas
 
@@ -80,50 +80,22 @@ Cada agente tiene `soul.md` (personalidad), `memory.md` (memoria a largo plazo),
 ### Instalación
 
 ```bash
-git clone https://github.com/dataelement/Clawith.git
-cd Clawith
+git clone https://github.com/revel-da/clawsedu.git
+cd clawsedu
 bash setup.sh             # Producción: solo dependencias de ejecución (~1 min)
-# bash setup.sh --dev     # Desarrollo: incluye pytest y herramientas de prueba (~3 min)
-bash restart.sh   # Inicia los servicios
-# → http://localhost:3008
+bash setup.sh --dev       # Desarrollo: incluye pytest y herramientas de prueba (~3 min)
 ```
 
-> **Nota:** `setup.sh` detecta automáticamente PostgreSQL disponible. Si no encuentra ninguno, **descarga e inicia una instancia local automáticamente**. Para usar una instancia específica de PostgreSQL, configure `DATABASE_URL` en el archivo `.env`.
+Completado automáticamente: creación de `.env` → configuración de PostgreSQL (prioriza instancias existentes, de lo contrario **inicia una local automáticamente**) → instalación de dependencias → creación de tablas → carga de datos iniciales.
 
-El primer usuario en registrarse se convierte automáticamente en **administrador de la plataforma**.
+> **Nota:** Para usar una instancia específica de PostgreSQL, configure `DATABASE_URL` en el archivo `.env`:
+> ```
+> DATABASE_URL=postgresql+asyncpg://user:pass@localhost:5432/clawsedu?ssl=disable
+> ```
 
-### Solución de Problemas de Red
+Iniciar servicios:
 
-Si `git clone` es lento o se agota el tiempo:
-
-| Solución | Comando |
-|---|---|
-| **Clonación superficial** (solo último commit) | `git clone --depth 1 https://github.com/dataelement/Clawith.git` |
-| **Descargar archivo Release** (sin git) | Ir a [Releases](https://github.com/dataelement/Clawith/releases), descargar `.tar.gz` |
-| **Configurar proxy git** | `git config --global http.proxy socks5://127.0.0.1:1080` |
-
-## 🤝 Contribuir
-
-¡Damos la bienvenida a contribuciones de todo tipo! Ya sea corregir errores, añadir funciones, mejorar documentación o traducir — consulta nuestra [Guía de Contribución](CONTRIBUTING.md) para empezar. Busca [`good first issue`](https://github.com/dataelement/Clawith/labels/good%20first%20issue) si eres nuevo.
-
-## 🔒 Lista de Seguridad
-
-Cambiar contraseñas predeterminadas · Configurar `SECRET_KEY` / `JWT_SECRET_KEY` fuertes · Habilitar HTTPS · Usar PostgreSQL en producción · Hacer copias de seguridad regularmente · Restringir acceso al socket Docker.
-
-## 💬 Comunidad
-
-¡Únete a nuestro [servidor de Discord](https://discord.gg/3AKMBM2G) para chatear con el equipo, hacer preguntas y compartir feedback!
-
-También puedes escanear el código QR a continuación para unirte a nuestra comunidad desde tu móvil:
-
-<p align="center">
-  <img src="assets/QR_Code.png" alt="Código QR de la Comunidad" width="200" />
-</p>
-
-## ⭐ Star History
-
-[![Star History Chart](https://api.star-history.com/image?repos=dataelement/Clawith&type=date&legend=top-left&v=2)](https://www.star-history.com/?repos=dataelement%2FClawith&type=date&legend=top-left)
-
-## 📄 Licencia
-
-[Apache 2.0](LICENSE)
+```bash
+bash restart.sh
+# → Frontend: http://localhost:3008
+```
