@@ -1,0 +1,6 @@
+0000000000000000000000000000000000000000 792fc51265a909c30d65034a38850e50a3ac735b unknown <a2904@ºêÉñµÄÁé³è.(none)> 1773754505 +0800	clone: from https://github.com/dataelement/Clawith.git
+792fc51265a909c30d65034a38850e50a3ac735b 8277fbabfa926cb9f3ffa432cd9d3c7675c0ae73 User <user@example.com> 1774273156 +0800	commit: chore: rename project to clawsedu and prepare for github upload
+8277fbabfa926cb9f3ffa432cd9d3c7675c0ae73 66096036e9545d93ce87ac738da9593a4cd548cf User <user@example.com> 1774273232 +0800	commit: chore: finalize project metadata for clawsedu
+66096036e9545d93ce87ac738da9593a4cd548cf f707c037be02ae15f248fcd45577c31448a0444d User <user@example.com> 1774273285 +0800	commit: chore: revert UI name to Clawith as requested
+f707c037be02ae15f248fcd45577c31448a0444d 0000000000000000000000000000000000000000 User <user@example.com> 1774273826 +0800	Branch: renamed refs/heads/main to refs/heads/main
+f707c037be02ae15f248fcd45577c31448a0444d f707c037be02ae15f248fcd45577c31448a0444d User <user@example.com> 1774273826 +0800	Branch: renamed refs/heads/main to refs/heads/main

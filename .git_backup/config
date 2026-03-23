@@ -1,0 +1,15 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[branch "main"]
+	vscode-merge-base = origin/main
+[user]
+	email = user@example.com
+	name = User
+[remote "origin"]
+	url = https://github.com/revel-da/clawsedu.git
+	fetch = +refs/heads/*:refs/remotes/origin/*

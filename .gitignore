@@ -1,0 +1,48 @@
+# ClawCrew
+node_modules/
+dist/
+*.zip
+build/
+__pycache__/
+*.pyc
+.env
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+*.db
+.DS_Store
+
+# Runtime agent data
+backend/data/
+backend/agent_data/
+ss-nodes.json
+.data/
+
+# Ignore Antigravity / Claude Code agent configurations
+.agent/
+.agents/
+_agent/
+_agents/
+
+# Internal docs
+docs/
+
+# Logs and temporary files
+*.log
+*.txt
+*.tar.gz
+compose_ps.txt
+compose_up.log
+docker_images.txt
+backend_build.log
+openmaic_rebuild.log
+diff.txt
+dev_deploy_temp.tar.gz
+*safe_rm_aliases.ps1*
+
+# Backend dependencies and diagnostics
+backend/.depsfastapi/
+backend/.pydeps/
+backend/_diag_*.txt

@@ -1,0 +1,114 @@
+"""Security utilities: JWT, password hashing, and authentication dependencies."""
+
+import base64
+import hashlib
+import hmac
+import secrets
+import uuid
+from datetime import datetime, timedelta, timezone
+
+from fastapi import Depends, HTTPException, status
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+from jose import JWTError, jwt
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.config import get_settings
+from app.database import get_db
+
+settings = get_settings()
+
+# Bearer token scheme
+security = HTTPBearer()
+
+
+def hash_password(password: str) -> str:
+    """Hash a password."""
+    salt = secrets.token_bytes(16)
+    digest = hashlib.pbkdf2_hmac("sha256", password.encode("utf-8"), salt, 120000)
+    return f"{base64.b64encode(salt).decode('utf-8')}:{base64.b64encode(digest).decode('utf-8')}"
+
+
+def verify_password(plain_password: str, hashed_password: str) -> bool:
+    """Verify a password against its hash."""
+    try:
+        salt_b64, digest_b64 = hashed_password.split(":", 1)
+        salt = base64.b64decode(salt_b64.encode("utf-8"))
+        expected = base64.b64decode(digest_b64.encode("utf-8"))
+    except Exception:
+        return False
+    actual = hashlib.pbkdf2_hmac("sha256", plain_password.encode("utf-8"), salt, 120000)
+    return hmac.compare_digest(actual, expected)
+
+
+def create_access_token(user_id: str, role: str, expires_delta: timedelta | None = None) -> str:
+    """Create a JWT access token."""
+    expire = datetime.now(timezone.utc) + (
+        expires_delta or timedelta(minutes=settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES)
+    )
+    to_encode = {
+        "sub": user_id,
+        "role": role,
+        "exp": expire,
+    }
+    return jwt.encode(to_encode, settings.JWT_SECRET_KEY, algorithm=settings.JWT_ALGORITHM)
+
+
+def decode_access_token(token: str) -> dict:
+    """Decode and validate a JWT access token."""
+    try:
+        payload = jwt.decode(token, settings.JWT_SECRET_KEY, algorithms=[settings.JWT_ALGORITHM])
+        return payload
+    except JWTError:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid or expired token",
+        )
+
+
+async def get_current_user(
+    credentials: HTTPAuthorizationCredentials = Depends(security),
+    db: AsyncSession = Depends(get_db),
+):
+    """Dependency to get the current authenticated user."""
+    from app.models.user import User
+
+    payload = decode_access_token(credentials.credentials)
+    user_id = payload.get("sub")
+    if not user_id:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
+
+    result = await db.execute(select(User).where(User.id == uuid.UUID(user_id)))
+    user = result.scalar_one_or_none()
+    if not user or not user.is_active:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="User not found or inactive")
+    return user
+
+
+async def get_current_admin(current_user=Depends(get_current_user)):
+    """Dependency to require admin role (platform_admin or org_admin)."""
+    if current_user.role not in ("platform_admin", "org_admin"):
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Admin access required")
+    return current_user
+
+
+# Role hierarchy: higher index = more privileges
+ROLE_HIERARCHY = ["member", "agent_admin", "org_admin", "platform_admin"]
+
+
+def require_role(*allowed_roles: str):
+    """Factory to create a dependency that checks if the user has one of the allowed roles.
+
+    Usage:
+        @router.post("/", dependencies=[Depends(require_role("org_admin", "platform_admin"))])
+        async def my_endpoint(...):
+    """
+    async def _check(current_user=Depends(get_current_user)):
+        if current_user.role not in allowed_roles:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail=f"需要以下角色之一: {', '.join(allowed_roles)}",
+            )
+        return current_user
+    return _check
+
