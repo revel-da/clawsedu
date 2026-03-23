@@ -14,6 +14,10 @@
 </p>
 
 <p align="center">
+  <strong>ClawsEdu は、単なる LLM のラッパーではありません。AI エージェントを教育機関の「デジタル社員」に変える高度なオーケストレーション層です。自律システム「Aware」を搭載し、各エージェントは感知、意思決定、相互協力を通じて、学生や家族にシームレスで持続的、かつ進化し続ける学習体験を提供します。</strong>
+</p>
+
+<p align="center">
   <a href="README.md">English</a> ·
   <a href="README_zh-CN.md">中文</a> ·
   <a href="README_ja.md">日本語</a> ·

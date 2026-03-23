@@ -14,6 +14,10 @@
 </p>
 
 <p align="center">
+  <strong>ClawsEdu는 단순한 LLM 래퍼가 아닙니다. AI 에이전트를 교육 기관의 '디지털 직원'으로 변모시키는 정교한 오케스트레이션 레이어입니다. 'Aware' 자율 시스템을 통해 각 에이전트는 인식, 결정 및 협업을 수행하여 학생과 가족에게 원활하고 지속적이며 진화하는 학습 경험을 제공합니다.</strong>
+</p>
+
+<p align="center">
   <a href="README.md">English</a> ·
   <a href="README_zh-CN.md">中文</a> ·
   <a href="README_ja.md">日本語</a> ·

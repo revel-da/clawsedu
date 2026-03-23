@@ -14,6 +14,10 @@
 </p>
 
 <p align="center">
+  <strong>ClawsEdu is not just another wrapper for LLMs. It is a sophisticated orchestration layer that turns AI agents into "Digital Employees" for educational organizations. Featuring the "Aware" autonomous system, each agent can perceive, decide, and collaborate with others to provide a seamless, persistent, and evolving learning experience for students and families.</strong>
+</p>
+
+<p align="center">
   <a href="README.md">English</a> ·
   <a href="README_zh-CN.md">中文</a> ·
   <a href="README_ja.md">日本語</a> ·

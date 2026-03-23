@@ -14,6 +14,10 @@
 </p>
 
 <p align="center">
+  <strong>ClawsEdu 不仅仅是另一个大模型的套壳工具。它是一个复杂的编排层，旨在将 AI 智能体转化为教育机构的“数字员工”。通过内置的“Aware”自主系统，每个智能体都能感知、决策并相互协作，为学生和家庭提供无缝、持久且不断进化的学习体验。</strong>
+</p>
+
+<p align="center">
   <a href="README.md">English</a> ·
   <a href="README_zh-CN.md">中文</a> ·
   <a href="README_ja.md">日本語</a> ·

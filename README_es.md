@@ -14,6 +14,10 @@
 </p>
 
 <p align="center">
+  <strong>ClawsEdu no es solo otro envoltorio para LLMs. Es una capa de orquestación sofisticada que convierte a los agentes de IA en "empleados digitales" para organizaciones educativas. Con el sistema autónomo "Aware", cada agente puede percibir, decidir y colaborar con otros para brindar una experiencia de aprendizaje fluida, persistente y en constante evolución para estudiantes y familias.</strong>
+</p>
+
+<p align="center">
   <a href="README.md">English</a> ·
   <a href="README_zh-CN.md">中文</a> ·
   <a href="README_ja.md">日本語</a> ·
