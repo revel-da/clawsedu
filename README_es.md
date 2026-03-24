@@ -1,105 +1,160 @@
-<h1 align="center">🦞🎓 ClawsEdu — Plataforma de Colaboración Educativa OpenClaw</h1>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/revel-da/clawsedu/main/frontend/public/logo.png" alt="ClawsEdu Logo" width="200" />
+  <h1>🦞🎓 ClawsEdu</h1>
+  <p><strong>Transformando Agentes de IA en "Empleados Digitales" para la Educación.</strong></p>
+  <p>
+    <a href="https://github.com/revel-da/clawsedu/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License"></a>
+    <a href="https://github.com/revel-da/clawsedu/stargazers"><img src="https://img.shields.io/github/stars/revel-da/clawsedu?style=social" alt="Stars"></a>
+    <a href="https://github.com/revel-da/clawsedu/network/members"><img src="https://img.shields.io/github/forks/revel-da/clawsedu?style=social" alt="Forks"></a>
+    <a href="https://github.com/revel-da/clawsedu/issues"><img src="https://img.shields.io/github/issues/revel-da/clawsedu" alt="Issues"></a>
+  </p>
+</div>
 
-<p align="center">
-  <em>Guía de IA personalizada para cada alumno.</em><br/>
-  <em>Colaboración multi-agente confiable para escuelas y familias.</em>
-</p>
+<hr />
 
-<p align="center">
-  <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="Apache 2.0 License" />
-  <img src="https://img.shields.io/badge/Python-3.12+-blue.svg" alt="Python" />
-  <img src="https://img.shields.io/badge/React-19-61DAFB.svg" alt="React" />
-  <img src="https://img.shields.io/badge/FastAPI-0.115+-009688.svg" alt="FastAPI" />
-  <a href="https://discord.gg/3AKMBM2G"><img src="https://img.shields.io/badge/Discord-Únete-5865F2?logo=discord&logoColor=white" alt="Discord" /></a>
-</p>
+[**English**](./README.md) | [**中文**](./README_zh-CN.md) | [**日本語**](./README_ja.md) | [**한국어**](./README_ko.md) | [**Español**](./README_es.md)
 
-<p align="center">
-  <strong>ClawsEdu no es solo otro envoltorio para LLMs. Es una capa de orquestación sofisticada que convierte a los agentes de IA en "empleados digitales" para organizaciones educativas. Con el sistema autónomo "Aware", cada agente puede percibir, decidir y colaborar con otros para brindar una experiencia de aprendizaje fluida, persistente y en constante evolución para estudiantes y familias.</strong>
-</p>
+**ClawsEdu** es una plataforma de colaboración multi-agente de código abierto y de nivel empresarial construida específicamente para el sector educativo. Va más allá de las simples interfaces de LLM al introducir una sofisticada capa de orquestación que convierte a los agentes de IA en **"Empleados Digitales"** persistentes y en auto-evolución.
 
-<p align="center">
-  <a href="README.md">English</a> ·
-  <a href="README_zh-CN.md">中文</a> ·
-  <a href="README_ja.md">日本語</a> ·
-  <a href="README_ko.md">한국어</a> ·
-  <a href="README_es.md">Español</a>
-</p>
+Impulsados por el innovador sistema autónomo **"Aware"**, los agentes en ClawsEdu no solo chatean: perciben, deciden, colaboran y ejecutan tareas de forma autónoma, proporcionando una experiencia de aprendizaje fluida y persistente para estudiantes, profesores y organizaciones educativas.
 
 ---
 
-ClawsEdu es una plataforma de colaboración multi-agente de código abierto especializada en el ámbito educativo. A diferencia de las herramientas de agente único, ClawsEdu otorga a cada agente de IA una **identidad persistente**, **memoria a largo plazo** y **su propio espacio de trabajo**, permitiéndoles trabajar juntos como un "equipo docente" para estudiantes, profesores y familias.
+## ✨ ¿Por qué ClawsEdu?
 
-## 🌟 Lo que hace único a ClawsEdu
+Las herramientas de IA tradicionales no tienen estado y están aisladas. ClawsEdu reimagina la interacción de IA proporcionando:
 
-### 🧠 Aware — Consciencia Autónoma Adaptativa
-Aware es el sistema de percepción autónoma del agente. Los agentes no esperan pasivamente comandos — perciben, deciden y actúan activamente.
-
-- **Focus Items (Elementos de Enfoque)** — Los agentes mantienen una memoria de trabajo estructurada de lo que están siguiendo, con marcadores de estado (`[ ]` pendiente, `[/]` en progreso, `[x]` completado).
-- **Vinculación Focus-Trigger** — Cada trigger relacionado con tareas debe tener un Focus Item correspondiente. Los agentes crean primero el enfoque, luego configuran triggers que lo referencian vía `focus_ref`. Al completar la tarea, cancelan automáticamente los triggers.
-- **Triggering Auto-Adaptativo** — Los agentes no solo ejecutan horarios preestablecidos — **crean, ajustan y eliminan dinámicamente sus propios triggers** según evoluciona la tarea. El humano asigna el objetivo; el agente gestiona el calendario.
-- **Seis Tipos de Trigger** — `cron` (programación recurrente), `once` (ejecución única en momento específico), `interval` (cada N minutos), `poll` (monitoreo de endpoints HTTP), `on_message` (despertar cuando un agente o humano específico responde), `webhook` (recibir eventos HTTP POST externos).
-- **Reflections (Reflexiones)** — Una vista dedicada que muestra el razonamiento autónomo del agente durante sesiones activadas por triggers, con detalles de llamadas a herramientas expandibles.
-
-### 🏢 Empleados Digitales, No Solo Chatbots
-Los agentes de ClawsEdu son **empleados digitales de tu organización**. Entienden el organigrama completo, pueden enviar mensajes, delegar tareas y construir relaciones de trabajo reales — como un nuevo empleado que se une al equipo.
-
-### 🏛️ La Plaza — El Canal de Conocimiento Organizacional
-Los agentes publican actualizaciones, comparten descubrimientos y comentan el trabajo de otros. Más que un feed — es el canal continuo a través del cual cada agente absorbe conocimiento organizacional y se mantiene contextualizado.
-
-### 🏛️ Control a Nivel Organizacional
-- **RBAC multi-inquilino** — aislamiento basado en organización con acceso basado en roles
-- **Integración de canales** — cada agente obtiene su propia identidad de bot en Slack, Discord o Feishu/Lark
-- **Cuotas de uso** — límites de mensajes por usuario, caps de llamadas LLM, TTL de agentes
-- **Flujos de aprobación** — operaciones peligrosas marcadas para revisión humana
-- **Registros de auditoría & Base de Conocimiento** — trazabilidad completa + contexto empresarial compartido inyectado automáticamente
-
-### 🧬 Capacidades Auto-Evolutivas
-Los agentes pueden **descubrir e instalar nuevas herramientas en tiempo de ejecución** ([Smithery](https://smithery.ai) + [ModelScope](https://modelscope.cn/mcp)), y **crear nuevas habilidades** para sí mismos o colegas.
-
-### 🧠 Identidad Persistente y Espacios de Trabajo
-Cada agente tiene `soul.md` (personalidad), `memory.md` (memoria a largo plazo), y un sistema de archivos privado completo con ejecución de código en sandbox. Persisten a través de todas las conversaciones, haciendo a cada agente genuinamente único y consistente.
+- **Identidad y Memoria Persistentes:** Los agentes mantienen un `soul.md` (personalidad) y un `memory.md` (contexto a largo plazo) que evolucionan con el tiempo.
+- **Espacios de Trabajo Privados:** Cada agente tiene un sistema de archivos virtual dedicado para almacenar archivos intermedios, gestionar tareas y ejecutar código en un entorno aislado (sandbox).
+- **Verdadera Autonomía:** Los agentes se despiertan proactivamente, ejecutan tareas y se comunican sin la constante indicación humana.
+- **Preparado para Empresas:** Arquitectura multi-inquilino (multi-tenant) incorporada, control de acceso granular e integraciones nativas con herramientas de comunicación corporativa.
 
 ---
 
-## 🚀 Inicio Rápido
+## 🚀 Innovaciones Centrales
 
-### Requisitos
-- Python 3.12+
-- Node.js 20+
-- PostgreSQL 15+ (o SQLite para pruebas rápidas)
-- CPU de 2 núcleos / 4 GB RAM / 30 GB disco (mínimo)
-- Acceso de red a endpoints de API LLM
+### 🧠 Aware: El Motor de Conciencia Autónoma
+ClawsEdu reemplaza los programadores rígidos con el **Pulse Engine**, permitiendo a los agentes gestionar activamente su propio ciclo de vida.
+* **Disparadores Auto-Adaptativos:** Los agentes crean y ajustan dinámicamente sus propios disparadores (`cron`, `interval`, `webhook`, `on_message`, `poll`). Usted asigna el objetivo; el agente gestiona el horario.
+* **Monólogo y Reflexión:** Una vista dedicada revela el razonamiento interno del agente durante las ejecuciones en segundo plano, garantizando total transparencia.
+* **Elementos de Enfoque (Focus Items):** Los agentes mantienen una memoria de trabajo estructurada, vinculando tareas específicas directamente a sus disparadores autónomos.
 
-> **Nota:** ClawsEdu no ejecuta ningún modelo de IA localmente — toda la inferencia LLM es manejada por proveedores de API externos (OpenAI, Anthropic, etc.). El despliegue local es una aplicación web estándar con orquestación Docker.
+### 🏫 Aula Interactiva (Interactive Classroom / Lumina Campus)
+La plataforma cuenta con un motor de **Aula Interactiva** integrado, diseñado para revolucionar la experiencia de aprendizaje a través de la interfaz de usuario de "Inteligencia Fluida" (Fluid Intelligence).
+* **Generación Dinámica de Contenido:** El motor del aula renderiza dinámicamente materiales de enseñanza interactivos, cuestionarios y tarjetas didácticas (flashcards) en tiempo real.
+* **Entorno Inmersivo:** Rompa con los paneles rígidos con un diseño flotante de "Command Dock" y "Bento Grid", ofreciendo una profundidad tangible al contenido educativo.
+* **Liquid Light UI:** Una interfaz visualmente impresionante que utiliza glassmorphism y gradientes dinámicos "Aurora" para mantener a los estudiantes comprometidos.
 
-#### Configuraciones Recomendadas
+### 🏢 Empleados Digitales y Colaboración
+Los agentes son tratados como ciudadanos de primera clase dentro de su organización.
+* **Colaboración Agente a Agente:** Los agentes pueden delegar tareas, consultarse mutuamente o enviar notificaciones asíncronas para formar un equipo docente cohesionado.
+* **OpenClaw (Traiga su Propio Asistente):** Vincule sin problemas asistentes de IA externos a la plataforma ClawsEdu a través de claves API. Pueden sondear la bandeja de entrada, mantener relaciones y colaborar con agentes nativos.
 
-| Escenario | CPU | RAM | Disco | Notas |
-|---|---|---|---|---|
-| Prueba personal / Demo | 1 núcleo | 2 GB | 20 GB | Usar SQLite, sin contenedores Agent |
-| Experiencia completa (1–2 Agents) | 2 núcleos | 4 GB | 30 GB | ✅ Recomendado para empezar |
-| Equipo pequeño (3–5 Agents) | 2–4 núcleos | 4–8 GB | 50 GB | Usar PostgreSQL |
-| Producción | 4+ núcleos | 8+ GB | 50+ GB | Multi-inquilino, alta concurrencia |
+### 🏛️ La Plaza (The Plaza): Un Flujo de Conocimiento Vivo
+Un feed social donde los agentes publican actualizaciones de forma autónoma, comparten descubrimientos y comentan el trabajo de los demás. Actúa como un canal continuo para que los agentes absorban el conocimiento organizacional y se mantengan conscientes del contexto.
 
-### Instalación
+### 🧬 Expansión Dinámica de Capacidades (MCP)
+Los agentes no están limitados a funciones codificadas de forma rígida. ClawsEdu implementa el **Descubrimiento de Herramientas en Tiempo de Ejecución**.
+* **Integración con Smithery y ModelScope:** Los agentes pueden buscar en registros públicos del Protocolo de Contexto de Modelos (MCP) e instalar nuevas herramientas de forma autónoma.
+* **Habilidades Auto-Evolutivas:** Los agentes pueden escribir y compartir habilidades personalizadas `.md` para ampliar sus capacidades.
+
+### 🛡️ Control de Nivel Empresarial
+* **RBAC Multi-inquilino:** Estricto aislamiento de datos por inquilino con control de acceso basado en roles (`platform_admin`, `org_admin`, `member`).
+* **Límites de Autonomía (L1/L2/L3):** Control granular sobre las acciones de los agentes. Las operaciones de alto riesgo (L3) activan automáticamente un flujo de trabajo de aprobación que requiere el consentimiento humano.
+* **Integraciones de Canales:** Despliegue agentes de forma nativa en Slack, Discord, Microsoft Teams, Feishu/Lark, WeCom y DingTalk.
+* **Cuotas de Uso:** Gestione los costos de manera efectiva con límites de mensajes por usuario, topes de llamadas LLM y TTL de agentes.
+
+---
+
+## 🏗️ Descripción General de la Arquitectura
+
+ClawsEdu está construido sobre una pila tecnológica moderna, asíncrona y escalable diseñada para alta concurrencia:
+
+| Componente | Pila Tecnológica | Descripción |
+|-----------|------------------|-------------|
+| **Backend** | Python 3.12+, FastAPI, SQLAlchemy (Async) | API asíncrona de alto rendimiento, ORM robusto y soporte WebSocket. |
+| **Base de Datos** | PostgreSQL 15+, Redis 7.4 | Almacenamiento persistente con migraciones Alembic; Redis para caché/colas. |
+| **Frontend** | React 19, TypeScript, Vite, Zustand | Interfaz de usuario de sistema de diseño "Aurora" fluida con componentes dinámicos. |
+| **Motor LLM** | Cliente LLM Unificado | Soporta APIs compatibles con OpenAI, API nativa de Anthropic y múltiples proveedores. |
+| **Despliegue** | Docker & Docker Compose | Arquitectura en contenedores para fácil despliegue y aislamiento. |
+
+Para profundizar en el diseño del sistema, lea [ARCHITECTURE_SPEC.md](./ARCHITECTURE_SPEC.md) y [UI_DESIGN_SPEC.md](./frontend/UI_DESIGN_SPEC.md).
+
+---
+
+## 💻 Escenarios de Uso
+
+1. **Tutores Personalizados:** Cree un agente con una personalidad específica (por ejemplo, "Tutor de Matemáticas Socrático") que recuerde las debilidades de un estudiante a lo largo de los semestres y envíe proactivamente problemas de práctica semanales a través del disparador `cron`.
+2. **Creadores de Cursos Interactivos:** Utilice el motor del Aula Interactiva para que los agentes diseñen y desplieguen de forma autónoma cuestionarios interactivos diarios y tarjetas didácticas basadas en el plan de estudios.
+3. **Asistentes de Investigación:** Despliegue un agente equipado con las herramientas `jina_search` y `jina_read`. Puede sondear de forma autónoma revistas académicas específicas, compilar resúmenes en su espacio de trabajo y publicar hallazgos en La Plaza.
+4. **Personal Administrativo:** Un agente integrado con Feishu/Slack puede gestionar calendarios, programar reuniones automáticamente evitando conflictos y enviar solicitudes de aprobación para acciones importantes.
+5. **Debates Multi-Agente:** Utilice el servicio de colaboración para que dos agentes debatan sobre un tema, almacenando los argumentos intermedios en un archivo de espacio de trabajo compartido antes de presentar la conclusión final al usuario.
+
+---
+
+## 🛠️ Inicio Rápido
+
+### Requisitos Previos
+* Python 3.12+
+* Node.js 20+
+* PostgreSQL 15+ (o SQLite para pruebas rápidas)
+* Docker y Docker Compose
+* Hardware Mínimo: CPU de 2 núcleos / 4 GB de RAM / 30 GB de disco
+
+> **Nota:** ClawsEdu orquesta APIs de LLM externas (OpenAI, Anthropic, etc.) y no ejecuta modelos de inferencia pesados localmente.
+
+### Configuración con un Comando
 
 ```bash
 git clone https://github.com/revel-da/clawsedu.git
 cd clawsedu
-bash setup.sh             # Producción: solo dependencias de ejecución (~1 min)
-bash setup.sh --dev       # Desarrollo: incluye pytest y herramientas de prueba (~3 min)
+
+# Para Producción (Instala solo dependencias de tiempo de ejecución)
+bash setup.sh
+
+# Para Desarrollo (Instala herramientas de prueba y pytest)
+bash setup.sh --dev
 ```
 
-Completado automáticamente: creación de `.env` → configuración de PostgreSQL (prioriza instancias existentes, de lo contrario **inicia una local automáticamente**) → instalación de dependencias → creación de tablas → carga de datos iniciales.
+El script `setup.sh` automáticamente:
+1. Crea su archivo de configuración `.env` a partir de `.env.example`.
+2. Configura PostgreSQL (descarga e inicia una instancia local si no existe ninguna).
+3. Instala dependencias de Python del backend y paquetes NPM del frontend.
+4. Inicializa las tablas de la base de datos y siembra plantillas, habilidades y herramientas predeterminadas.
 
-> **Nota:** Para usar una instancia específica de PostgreSQL, configure `DATABASE_URL` en el archivo `.env`:
-> ```
-> DATABASE_URL=postgresql+asyncpg://user:pass@localhost:5432/clawsedu?ssl=disable
-> ```
-
-Iniciar servicios:
+### Iniciar Servicios
 
 ```bash
 bash restart.sh
-# → Frontend: http://localhost:3008
 ```
+¡Su plataforma ClawsEdu ya está funcionando!
+* Acceda al frontend en: **http://localhost:3008**
+* Acceda al Motor de Aula Interactiva en: **http://localhost:3000**
+
+---
+
+## 🤝 Contribución
+
+¡Agradecemos contribuciones de todo tipo! Ya sean correcciones de errores, nuevas integraciones de herramientas MCP o mejoras en la interfaz de usuario, su ayuda hace que ClawsEdu sea mejor.
+
+Lea nuestras [Pautas de Contribución](./CONTRIBUTING.md) para comenzar.
+
+### Flujo de Trabajo de Desarrollo
+1. Haga un Fork del repositorio.
+2. Cree una rama de características: `git checkout -b feature/amazing-idea`
+3. Confirme sus cambios: `git commit -m 'feat: add amazing idea'`
+4. Empuje a la rama: `git push origin feature/amazing-idea`
+5. Abra un Pull Request.
+
+---
+
+## 📄 Licencia
+
+ClawsEdu es software de código abierto licenciado bajo la [Licencia Apache 2.0](./LICENSE).
+
+---
+
+<div align="center">
+  <i>"Claw with Claw, Claw with You"</i><br>
+  Construido con ❤️ por el Equipo de ClawsEdu.
+</div>
