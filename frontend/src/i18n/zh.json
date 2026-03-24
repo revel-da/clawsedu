@@ -14,8 +14,36 @@
     "language": "语言",
     "plaza": "学习广场",
     "interactive": "上课 / 练习",
-    "oversight": "学习监督"
+    "oversight": "学习监督",
+    "messages": "消息中心"
   },
+  "common": {
+      "save": "保存",
+      "cancel": "取消",
+      "edit": "编辑",
+      "delete": "删除",
+      "confirm": "确认",
+      "back": "返回",
+      "loading": "加载中...",
+      "noData": "暂无数据",
+      "enabled": "已启用",
+      "disabled": "已禁用",
+      "all": "全部",
+      "search": "搜索",
+      "assistant": "学习助手",
+      "download": "下载",
+      "success": "操作成功",
+      "error": "操作失败",
+      "minutes": "分钟",
+      "viewAll": "查看全部",
+      "test": "测试",
+      "testing": "测试中...",
+      "testFailed": "测试失败",
+      "toggleSort": "点击切换排序",
+      "close": "关闭",
+      "create": "创建",
+      "noPermission": "你没有权限访问此页面。"
+    },
   "auth": {
     "login": "登录",
     "register": "注册",
@@ -108,12 +136,14 @@
       "idle": "待命中",
       "stopped": "已停止",
       "creating": "创建中",
-      "error": "异常"
+      "error": "异常",
+      "externalLab": "外部 · 实验性",
+      "lastSeen": "最后在线"
     },
     "tabs": {
       "status": "状态",
       "tasks": "任务",
-      "aware": "\u81ea\u6211\u610f\u8bc6",
+      "aware": "自我意识",
       "mind": "心智",
       "tools": "工具",
       "skills": "技能",
@@ -132,7 +162,8 @@
       "boundaries": "行为边界",
       "lastActive": "最后活跃",
       "tasksInProgress": "进行中",
-      "supervisions": "督办"
+      "supervisions": "督办",
+      "createdBy": "创建者"
     },
     "actions": {
       "start": "启动",
@@ -147,7 +178,7 @@
       "notFound": "找不到此学习助手",
       "backToDashboard": "返回仪表盘",
       "humanRelationships": "人类关系",
-      "agentRelationships": "学习助手关系",
+      "agentRelationships": "助手关系",
       "searchMembers": "搜索组织架构成员...",
       "noRelationships": "暂无关系",
       "addRelationship": "添加关系",
@@ -155,7 +186,8 @@
       "colleague": "同事",
       "subordinate": "下级",
       "collaborator": "协作",
-      "reporter": "汇报对象"
+      "reporter": "汇报对象",
+      "descriptionPlaceholder": "关系描述..."
     },
     "tasks": {
       "todo": "待办",
@@ -183,24 +215,25 @@
       "weekly": "每周"
     },
     "aware": {
-      "focus": "\u5173\u6ce8\u70b9",
-      "focusDesc": "Agent \u5f53\u524d\u6b63\u5728\u5173\u6ce8\u7684\u4e8b\u9879",
-      "focusEmpty": "\u6682\u65e0\u5173\u6ce8\u70b9\u3002Agent \u5728\u5bf9\u8bdd\u4e2d\u4f1a\u81ea\u52a8\u521b\u5efa\u548c\u66f4\u65b0\u5173\u6ce8\u70b9\u3002",
-      "viewRawMarkdown": "\u67e5\u770b\u539f\u59cb Markdown",
-      "standaloneTriggers": "\u72ec\u7acb\u89e6\u53d1\u5668",
+      "focus": "关注点",
+      "focusDesc": "Agent 当前正在关注的事项",
+      "focusEmpty": "暂无关注点。Agent 在对话中会自动创建和更新关注点。",
+      "viewRawMarkdown": "查看原始 Markdown",
+      "standaloneTriggers": "独立触发器",
       "noTriggers": "无触发器",
       "fired": "已触发 {{count}} 次",
       "disabled": "已禁用",
       "disable": "禁用",
       "enable": "启用",
       "deleteTriggerConfirm": "确定删除触发器 \"{{name}}\"？",
-      "reflections": "\u5185\u5fc3\u72ec\u767d",
-      "reflectionsDesc": "Agent \u81ea\u4e3b\u884c\u52a8\u7684\u601d\u8003\u8bb0\u5f55",
-      "reflectionsEmpty": "\u6682\u65e0\u5185\u5fc3\u72ec\u767d\u8bb0\u5f55\u3002Agent \u7684\u81ea\u4e3b\u884c\u52a8\u5c06\u663e\u793a\u5728\u8fd9\u91cc\u3002",
+      "reflections": "内心独白",
+      "reflectionsDesc": "Agent 自主行动的思考记录",
+      "reflectionsEmpty": "暂无内心独白记录。Agent 的自主行动将显示在这里。",
       "taskHistory": "任务历史",
       "taskHistoryEmpty": "暂无归档任务。",
       "inProgress": "进行中",
-      "completed": "已完成"
+      "completed": "已完成",
+      "triggerNotification": "触发通知"
     },
     "soul": {
       "title": "Soul.md — 人格定义",
@@ -208,6 +241,12 @@
       "saveButton": "保存",
       "saving": "保存中...",
       "cancelButton": "取消"
+    },
+    "mind": {
+      "soulDesc": "核心身份、人格和行为边界。",
+      "memoryDesc": "通过对话和经验积累的持久记忆。",
+      "heartbeatTitle": "心跳指令",
+      "heartbeatDesc": "周期性意识检查的指令。Agent 在每次心跳期间读取此文件。"
     },
     "memory": {
       "title": "记忆文件",
@@ -228,7 +267,9 @@
       "cancel": "取消",
       "toolName": "工具名称",
       "enabled": "已启用",
-      "disabled": "已禁用"
+      "disabled": "已禁用",
+      "importPreset": "从预设导入",
+      "importDesc": "选择一个预设技能导入到此学习助手。所有技能文件将被复制到助手的技能文件夹中。"
     },
     "toolMgmt": {
       "title": "工具管理",
@@ -240,6 +281,8 @@
       "uploadFile": "上传文件",
       "newFolder": "新建文件夹",
       "newFolderName": "文件夹名称",
+      "newFile": "新建文件",
+      "importFromJson": "从 JSON 导入",
       "dragOrClick": "拖拽文件到此处或点击上传",
       "noFiles": "暂无文件",
       "delete": "删除",
@@ -257,11 +300,25 @@
       "attachment": "附件",
       "uploadFailed": "上传失败",
       "askAboutFile": "关于 {{name}} 的问题...",
-      "thinking": "思考中..."
+      "thinking": "思考中...",
+      "stop": "停止",
+      "mySessions": "我的会话",
+      "allUsers": "所有用户",
+      "newSession": "新建会话",
+      "noSessions": "暂无会话",
+      "noSessionSelected": "未选择会话",
+      "startNewSession": "开始新建会话",
+      "startFirst": "点击 \"+ 新建会话\" 开始对话。",
+      "toolCall": "工具调用",
+      "agentConversationWith": "🤖 学习助手对话 · {{name}}",
+      "readOnlyWith": "只读 · {{name}}"
     },
     "activityLog": {
       "title": "工作日志",
-      "noRecords": "暂无工作日志"
+      "recentTitle": "最近动态",
+      "noRecords": "暂无工作日志",
+      "userActions": "用户操作",
+      "backendServices": "后台服务"
     },
     "settings": {
       "title": "学习助手设置",
@@ -284,6 +341,8 @@
       "maxToolRoundsDesc": "智能体每条消息可执行的工具调用轮次数（搜索、写入等）。默认值：50",
       "saveSettings": "保存设置",
       "saved": "已保存",
+      "save": "保存",
+      "saving": "保存中...",
       "autonomy": {
         "title": "自主性边界配置",
         "description": "配置学习助手执行各项操作时的自主性级别",
@@ -328,20 +387,58 @@
       },
       "expiry": {
         "renew": "续期",
-        "setExpiry": "设置过期",
+        "setExpiry": "设置过期时间",
         "title": "Agent 过期时间",
         "expired": "已过期",
         "currentExpiry": "当前过期时间：",
         "neverExpires": "永不过期",
         "quickRenew": "快速续期（从当前基础上）",
         "days": "{{count}}天",
-        "customDeadline": "自定义截止时间",
-        "saving": "保存中..."
+        "customDeadline": "自定义截止日期",
+        "saving": "保存中...",
+        "expires": "过期时间"
+      },
+      "perm": {
+        "title": "访问权限",
+        "description": "控制谁可以查看和与此学习助手交互。只有创建者或管理员可以更改此设置。",
+        "company": "全机构可见",
+        "companyDesc": "机构内的所有用户都可以使用此助手",
+        "selfOnly": "仅自己可见",
+        "selfDesc": "只有创建者本人可以使用此助手",
+        "accessLevel": "默认访问级别",
+        "useLevel": "使用",
+        "useDesc": "任务、聊天、工具、技能、工作区",
+        "manageLevel": "管理",
+        "manageDesc": "完全访问权限，包括设置、心智、关系",
+        "currentAccess": "当前访问权限",
+        "readOnly": "只有创建者或管理员可以更改权限"
+      },
+      "heartbeat": {
+        "title": "心跳设置",
+        "description": "周期性意识检查 —— 助手会主动监控广场和工作环境。",
+        "enabled": "启用心跳",
+        "enabledDesc": "助手将定期检查广场和工作状态",
+        "interval": "检查间隔",
+        "intervalDesc": "助手检查更新的频率",
+        "activeHours": "活跃时间",
+        "activeHoursDesc": "仅在这些时间段触发心跳 (HH:MM-HH:MM)",
+        "lastRun": "上次心跳时间"
+      },
+      "timezone": {
+        "title": "时区设置",
+        "description": "用于此学习助手的调度、活跃时间和时间意识的时区。如果未设置，默认为机构时区。",
+        "current": "助手时区",
+        "override": "此助手的自定义时区",
+        "inherited": "使用机构默认时区",
+        "default": "↩ 机构默认"
       }
     },
     "tools": {
-      "platformTools": "平台预置工具",
-      "agentInstalled": "Agent 自行安装的工具"
+      "platformTools": "平台工具",
+      "agentInstalled": "Agent 安装的工具",
+      "noInstalled": "暂无安装的工具",
+      "confirmDelete": "确定从该智能体移除 \"{{name}}\" 吗？",
+      "removeTool": "移除工具"
     },
     "toolCategories": {
       "file": "文件操作",
@@ -356,6 +453,23 @@
       "success": "上传成功",
       "failed": "上传失败",
       "uploading": "上传中..."
+    },
+    "openclaw": {
+      "created": "外部学习助手已创建",
+      "createdDesc2": "你的外部助手已成功注册。请复制下方的指令并发送给你的外部助手以完成配置。",
+      "setupInstruction": "设置指令",
+      "setupInstructionDesc": "复制并发送给你的外部助手。它将自动完成配置。",
+      "keyNote": "此密钥已包含在上述指令中。如果需要手动配置，请单独保存。",
+      "goToAgent": "前往助手详情页",
+      "nativeTitle": "平台托管",
+      "nativeDesc": "在 ClawsEdu 平台上运行的完整助手",
+      "openclawTitle": "关联外部助手",
+      "openclawDesc": "连接你现有的外部助手实例",
+      "basicTitle": "关联外部助手",
+      "basicDesc": "为你的外部助手设置名称和描述。模型、人格和技能将在你的外部助手实例中配置。",
+      "namePlaceholder": "例如：我的本地助教",
+      "rolePlaceholder": "例如：运行在我的 Mac 上的个人助手",
+      "createBtn": "关联助手"
     }
   },
   "wizard": {
@@ -452,7 +566,8 @@
     "placeholder": "输入消息...",
     "send": "发送",
     "deleteSession": "删除会话",
-    "deleteConfirm": "确定删除这个会话及其所有消息？此操作无法撤销。"
+    "deleteConfirm": "确定删除这个会话及其所有消息？此操作无法撤销。",
+    "stop": "停止"
   },
   "messages": {
     "title": "消息中心",
@@ -478,6 +593,9 @@
       "users": "用户",
       "invites": "加入码"
     },
+    "skills": {
+      "registryDesc": "管理全局技能。每个技能都是一个包含 SKILL.md 文件的文件夹。在助手创建期间选择的技能会被复制到助手的工作区。"
+    },
     "stats": {
       "users": "{{count}} 用户",
       "runningAgents": "{{running}}/{{total}} 运行中学习助手"
@@ -500,281 +618,108 @@
       "export": "导出 CSV",
       "disable": "禁用"
     },
-    "llm": {
-      "addModel": "添加模型",
-      "noModels": "暂无数据",
-      "provider": "提供商",
-      "model": "模型",
-      "label": "显示名称",
-      "apiKey": "API Key",
-      "baseUrl": "Base URL（可选）",
-      "enabled": "启用",
-      "disabled": "禁用",
-      "save": "保存",
-      "delete": "删除",
-      "edit": "编辑",
-      "cancel": "取消"
-    },
-    "tools": {
-      "title": "全局工具管理",
-      "testConnection": "测试连接",
-      "testing": "测试中...",
-      "connectionSuccess": "连接成功！发现 {{count}} 个工具",
-      "connectionFailed": "连接失败",
-      "importAll": "导入全部",
-      "mcpServerName": "MCP 服务名称",
-      "mcpServerUrl": "MCP Server URL",
-      "configure": "配置",
-      "collapse": "收起",
-      "saveConfig": "保存配置",
-      "description": "描述",
-      "parameters": "参数配置",
-      "initBuiltinsHint": "请先启动后端以初始化内置工具。",
-      "emptyState": "暂无数据。请先启动后端以初始化内置工具。"
-    },
     "org": {
-      "feishuSync": "飞书通讯录同步配置",
-      "appId": "App ID",
-      "appSecret": "App Secret",
+      "feishuSync": "飞书组织同步",
       "syncing": "同步中...",
-      "syncNow": "同步",
+      "syncNow": "立即同步",
       "syncComplete": "同步完成：{{departments}} 个部门，{{members}} 个成员",
-      "orgBrowser": "组织架构浏览",
-      "allDepartments": "全部",
+      "orgBrowser": "组织架构浏览器",
+      "allDepartments": "所有部门",
       "searchMembers": "搜索成员...",
-      "member": "成员",
-      "admin": "管理员",
-      "noMembers": "暂无成员"
+      "noMembers": "未找到成员"
     },
     "config": {
-      "title": "平台配置",
-      "publicUrl": "公网地址 (PUBLIC_BASE_URL)",
-      "publicUrlPlaceholder": "例：https://xxx.cpolar.top",
-      "maxRounds": "Agent 对话轮次上限",
-      "maxRoundsDesc": "两个 Agent 之间单次协作对话的最大轮次。控制 Agent 协作时可以进行多少轮消息交换。",
-      "maxRoundsPlaceholder": "默认 20",
-      "save": "保存",
-      "saved": "已保存",
-      "themeColor": "主题色"
+      "themeColor": "主题色",
+      "publicUrl": "公开访问地址",
+      "publicUrlPlaceholder": "https://clawsedu.example.com",
+      "save": "保存配置",
+      "saved": "配置已保存"
     },
     "companyName": {
       "title": "机构名称",
       "placeholder": "输入机构名称"
     },
     "companyIntro": {
-      "title": "机构简介",
-      "description": "描述你的机构定位与学习文化。此信息会作为上下文包含在每次学习助手对话中。",
-      "hint": "此内容会出现在每个学习助手的系统提示词中"
+      "title": "机构介绍",
+      "description": "描述您的机构和学习文化。这些信息将作为上下文包含在每个助手的对话中。",
+      "hint": "这些内容将出现在每个助手的系统提示词中"
     },
-    "kb": {
-      "title": "公司知识库",
-      "description": "共享文件，所有 Agent 可通过 enterprise_info/ 目录访问。",
-      "rootDir": "根目录",
-      "uploadFile": "上传文件",
-      "newFolder": "新建文件夹",
-      "folderName": "文件夹名称",
-      "noFiles": "暂无文件",
-      "dragOrClick": "拖拽或点击上传",
-      "delete": "删除",
-      "save": "保存",
-      "edit": "编辑",
-      "cancel": "取消",
-      "viewFile": "查看文件",
-      "confirmDelete": "确认删除"
+    "llm": {
+      "addModel": "添加模型",
+      "editModel": "编辑模型",
+      "label": "模型标签",
+      "baseUrl": "API 基础地址",
+      "enabled": "已启用",
+      "disabled": "已禁用",
+      "pricingPreview": "用户可选模型费用预览",
+      "model": "模型",
+      "inputOutputPerMillion": "输入/输出 (每百万)",
+      "example1000": "示例 (各 1000 token)",
+      "freeTokensPerMonth": "免费额度/月",
+      "confirmDeleteWithAgents": "此模型正被 {{count}} 个助手使用：\n\n{{agents}}\n\n确定要删除吗？（他们的模型配置将被清除）"
+    },
+    "openmaic": {
+      "providerView": "课堂引擎 Provider 视图"
+    },
+    "tools": {
+      "title": "工具配置",
+      "mcpServerName": "MCP 服务名称",
+      "testing": "测试中...",
+      "testConnection": "测试连接",
+      "connectionSuccess": "成功连接！发现 {{count}} 个工具",
+      "connectionFailed": "连接失败",
+      "importAll": "导入工具",
+      "configure": "配置",
+      "collapse": "折叠",
+      "saveConfig": "保存配置",
+      "emptyState": "暂无工具"
     },
     "audit": {
-      "title": "审计日志",
-      "noRecords": "暂无审计记录",
-      "time": "时间",
-      "user": "用户",
-      "action": "操作",
-      "target": "对象",
-      "filterAll": "全部",
+      "filterAll": "全部记录",
       "filterBackground": "后台服务",
       "filterActions": "用户操作",
-      "records": "{{count}} 条记录"
+      "records": "共 {{count}} 条记录"
     },
-    "notificationBar": {
-      "title": "顶部通知条",
-      "enabled": "启用通知条",
-      "text": "通知文案",
-      "textPlaceholder": "输入通知条文案，如：🎉 v2.1 已发布！",
-      "description": "在页面顶部显示一行通知条，所有用户（含未登录用户）可见。",
-      "preview": "预览"
-    }
-  },
-  "common": {
-    "assistant": "学习助手",
-    "create": "创建",
-    "save": "保存",
-    "noPermission": "你没有权限访问此页面。",
-    "cancel": "取消",
-    "confirm": "确认",
-    "delete": "删除",
-    "search": "搜索",
-    "loading": "加载中...",
-    "noData": "暂无数据",
-    "error": "出错了",
-    "close": "关闭",
-    "edit": "编辑",
-    "back": "返回",
-    "yes": "是",
-    "no": "否",
-    "all": "全部",
-    "none": "无",
-    "download": "下载",
-    "channels": {
-      "feishu": "飞书",
-      "discord": "Discord",
-      "slack": "Slack",
-      "teams": "Microsoft Teams",
-      "dingtalk": "钉钉",
-      "wecom": "企业微信"
-    }
-  },
-  "admin": {
-    "title": "机构管理",
-    "desc": "管理所有机构，创建新机构，配置平台级设置。",
-    "createCompany": "创建机构",
-    "platformSettings": "平台设置",
-    "allowSelfCreate": "允许用户自行创建机构",
-    "allowSelfCreateDesc": "关闭后，仅平台管理员可以创建机构。",
-    "inviteCodeRequired": "注册需要加入码",
-    "inviteCodeRequiredDesc": "开启后，新用户必须提供有效的加入码才能注册。",
-    "companyNamePlaceholder": "机构名称",
-    "companyCreated": "机构创建成功",
-    "companyCreatedDesc": "已成功创建。",
-    "adminInviteCode": "管理员加入码（仅限一次使用，首位使用者成为机构管理员）：",
-    "inviteCodeLabel": "管理员加入码",
-    "inviteCodeHowTo": "如何使用此加入码：",
-    "inviteCodeExplain": "将此加入码发送给负责管理该机构的人员。他们需要在平台上注册新账号，然后输入此加入码加入机构。首位使用此加入码的用户将自动成为该机构的管理员。此加入码仅限一次使用。",
-    "copyCode": "复制加入码",
-    "copied": "已复制",
-    "cannotDisableDefault": "无法停用默认机构 -- 平台管理员将无法登录",
-    "company": "机构",
-    "users": "用户数",
-    "agents": "学习助手",
-    "tokens": "Token 用量",
-    "status": "状态",
-    "active": "正常",
-    "disabled": "已停用",
-    "disable": "停用",
-    "enable": "启用",
-    "confirmDisable": "停用此机构？所有用户和学习助手将被暂停。",
-    "createdAt": "创建时间",
-    "showing": "{{start}}-{{end}} / {{total}}",
-    "prev": "上一页",
-    "next": "下一页"
-  },
-  "companySetup": {
-    "title": "设置你的机构",
-    "subtitle": "加入已有机构或创建一个新机构",
-    "joinTitle": "加入机构",
-    "joinDesc": "输入老师或管理员提供的加入码",
-    "inviteCode": "加入码",
-    "inviteCodePlaceholder": "例如 ABC12345",
-    "joinBtn": "加入机构",
-    "or": "或",
-    "createTitle": "创建机构",
-    "createDesc": "创建新的学习空间，稍后可邀请成员加入",
-    "companyName": "机构名称",
-    "companyNamePlaceholder": "例如 计算机学院",
-    "createBtn": "创建机构",
-    "contactAdmin": "请联系老师或管理员获取加入码。",
-    "hint": "你可以随时从「管理设置」中邀请成员加入。"
-  },
-  "openclaw": {
-    "created": "外部学习助手已创建",
-    "createdDesc2": "你的外部学习助手已注册。复制以下指令并发送给该学习助手完成配置。",
-    "openclawTitle": "连接外部学习助手",
-    "basicTitle": "连接外部学习助手",
-    "setupInstruction": "配置指令",
-    "setupInstructionDesc": "复制并发送给你的外部学习助手，它将自动完成配置。",
-    "keyNote": "API Key 已嵌入在上方指令中。如需手动配置可单独保存。",
-    "goToAgent": "前往学习助手页面",
-    "createBtn": "连接"
-  },
-  "channelGuide": {
-    "setupGuide": "配置说明",
-    "feishuPermJson": "权限批量导入 JSON",
-    "feishuPermCopy": "复制",
-    "feishuPermCopied": "✓ 已复制",
-    "slack": {
-      "step1": "打开 api.slack.com/apps → 点击 Create New App → 选择 From Scratch → 填写应用名称并选择你的 Workspace → 点击 Create App",
-      "step2": "左侧菜单点击 OAuth & Permissions → 向下滚动到 Scopes → 在 Bot Token Scopes 下点击 Add an OAuth Scope → 依次添加：chat:write、im:history、app_mentions:read",
-      "step3": "回到 OAuth & Permissions 顶部 → 点击 Install to Workspace → 点击 Allow → 复制 Bot User OAuth Token（以 xoxb- 开头）",
-      "step4": "左侧菜单 → Basic Information → 滚动到 App Credentials → 点击 Signing Secret 旁的 Show → 复制",
-      "step5": "将 Bot Token 和 Signing Secret 填入上方 → 点击保存配置 → 复制出现的 Webhook URL",
-      "step6": "左侧菜单 → Event Subscriptions → 打开 Enable Events 开关 → 将 Webhook URL 粘贴到 Request URL 框中（显示 Verified ✓ 后继续）→ 在 Subscribe to bot events 下点击 Add Bot User Event，依次添加：app_mention、message.im → 点击 Save Changes",
-      "step7": "页面顶部会出现黄色横幅：点击 reinstall your app 并重新授权",
-      "step8": "在 Slack 中找到你的 Bot，发一条私信测试是否正常回复",
-      "note": "服务器必须能被公网访问，Slack 才能将消息推送到 Webhook URL。"
+    "admin": {
+      "title": "机构管理",
+      "desc": "管理所有机构，创建新机构并配置平台设置。",
+      "createCompany": "创建机构",
+      "platformSettings": "平台设置",
+      "allowSelfCreate": "允许用户自行创建机构",
+      "allowSelfCreateDesc": "禁用后，仅平台管理员可以创建机构。",
+      "company": "机构",
+      "users": "用户数",
+      "agents": "助手数",
+      "tokens": "Token 用量",
+      "createdAt": "创建时间",
+      "status": "状态",
+      "active": "启用",
+      "disabled": "停用",
+      "enable": "启用",
+      "disable": "停用",
+      "confirmDisable": "确定要停用此机构吗？所有用户和助手都将被暂停。",
+      "cannotDisableDefault": "无法停用默认机构 —— 否则平台管理员将被锁定。",
+      "companyCreated": "机构已创建",
+      "companyCreatedDesc": "已成功创建。",
+      "inviteCodeLabel": "管理员加入码",
+      "inviteCodeHowTo": "如何使用此码：",
+      "inviteCodeExplain": "将此码发送给将要管理该机构的人员。他们应在平台上注册新账号，然后输入此码加入。第一个使用此码的人将自动成为该机构的组织管理员。此码仅限单次使用。",
+      "copied": "已复制",
+      "copyCode": "复制加入码",
+      "companyNamePlaceholder": "机构名称"
     },
-    "discord": {
-      "step1": "打开 discord.com/developers/applications → 点击 New Application → 输入名称 → 点击 Create",
-      "step2": "左侧菜单 → Bot → 点击 Reset Token → 确认 → 复制 Bot Token。同时在 Privileged Gateway Intents 下开启 Message Content Intent → Save Changes",
-      "step3": "左侧菜单 → General Information → 复制 Application ID 和 Public Key",
-      "step4": "左侧菜单 → OAuth2 → URL Generator → Scopes 勾选 bot 和 applications.commands → Bot Permissions 勾选 Send Messages 和 Read Message History → 复制生成的 URL → 在浏览器中打开 → 选择你的服务器 → 授权",
-      "step5": "将 Application ID、Bot Token、Public Key 填入上方 → 点击保存配置 → 复制出现的 Webhook URL（Interactions Endpoint URL）",
-      "step6": "左侧菜单 → General Information → 将 Webhook URL 粘贴到 Interactions Endpoint URL 框 → 点击 Save Changes（Discord 会自动验证）",
-      "step7": "在 Discord 服务器中输入 /ask message:<你的问题> 即可与 Agent 对话",
-      "note": "Discord 保存时会立即验证 Endpoint，因此保存时服务器必须处于运行状态且可公网访问。"
-    },
-    "feishu": {
-      "step1": "打开 open.feishu.cn → 登录 → 点击开发者后台 → 创建企业自建应用 → 填写名称和简介 → 确认创建",
-      "step2": "进入应用页面，左侧菜单 → 添加应用能力 → 找到「机器人」→ 点击添加",
-      "step3": "左侧菜单 → 凭证与基础信息 → 复制 App ID 和 App Secret",
-      "step4": "将 App ID 和 App Secret 填入上方 → 点击保存配置 → 复制出现的 Webhook URL",
-      "step5": "左侧菜单 → 事件与回调 → 事件配置 → 编辑「订阅方式」→ 选择「将事件发送至 开发者服务器」→ 将 Webhook URL 粘贴到「请求地址」→ 保存（自动验证）→ 点击「添加事件」→ 搜索并添加 im.message.receive_v1 → 保存",
-      "step6": "左侧菜单 → 权限管理 → 点击「批量导入/导出权限」→ 粘贴下方权限 JSON → 确认导入",
-      "step7": "左侧菜单 → 版本管理与发布 → 创建版本 → 填写说明 → 提交审核发布（企业自建应用可在管理后台自行审批）",
-      "step8": "发布后，将机器人拉入飞书群，或让用户直接添加机器人为好友即可开始对话",
-      "note": "企业自建应用审核通常即时通过。每次新增权限后都需要重新发布。",
-      "ws_step1": "打开 open.feishu.cn → 登录 → 开发者后台 → 创建企业自建应用 → 填写名称和简介 → 确认创建",
-      "ws_step2": "左侧菜单 → 添加应用能力 → 找到「机器人」→ 点击添加",
-      "ws_step3": "左侧菜单 → 凭证与基础信息 → 复制 App ID 和 App Secret",
-      "ws_step4": "在上方选择「长连接 (WebSocket)」模式 → 填入 App ID 和 App Secret → 点击保存配置",
-      "ws_step5": "左侧菜单 → 事件与回调 → 事件配置 → 编辑「订阅方式」→ 选择「使用长连接接收事件」→ 点击「添加事件」→ 搜索并添加 im.message.receive_v1（接收消息 v2.0）→ 申请开通相关权限 → 保存",
-      "ws_step6": "左侧菜单 → 权限管理 → 点击「批量导入/导出权限」→ 粘贴下方权限 JSON → 确认导入",
-      "ws_step7": "左侧菜单 → 版本管理与发布 → 创建版本 → 提交审核发布 → 在管理后台自行审批",
-      "ws_step8": "发布后，将机器人拉入飞书群或添加为好友即可开始对话",
-      "ws_note": "WebSocket 长连接模式无需公网 IP 或回调地址，连接由系统自动管理。"
-    },
-    "teams": {
-      "step1": "打开 portal.azure.com → Azure Active Directory → 应用注册 → 新注册 → 输入名称 → 选择「仅此组织目录中的帐户」（单租户）→ 注册",
-      "step2": "在应用概述页面，复制应用程序（客户端）ID 并保存。然后转到证书和密码 → 新客户端密码 → 添加说明和过期时间 → 复制值（这是你的 App Secret）。同时从概述页面复制目录（租户）ID。",
-      "step3": "本地测试：启动 localtunnel 暴露后端：`npx --yes localtunnel --port 8000` → 复制隧道 URL（如 https://xxxxx.loca.lt）。在 Azure Bot 中配置消息传递终结点 URL 时，将 'localhost' 替换为你的 localtunnel URL。",
-      "step4": "将 App ID（客户端 ID）、App Secret（客户端密码）和租户 ID（目录 ID）填入上方。点击保存配置 → 复制出现的消息传递终结点 URL。",
-      "step5": "在 Azure Bot → 频道 → Microsoft Teams → 配置 → 粘贴消息传递终结点 URL（本地测试时请使用 localtunnel URL 而不是 localhost）→ 保存 → 机器人将在 Teams 中可用。",
-      "note": "服务器必须能被公网访问，Microsoft Teams 才能访问消息传递终结点 URL。本地测试请使用 localtunnel，并将 'localhost' 替换为隧道 URL。",
-      "tenantId": "租户 ID（目录 ID）",
-      "tenantIdPlaceholder": "请输入此单租户应用的租户 ID（目录 ID）",
-      "tenantIdHint": "单租户应用必填，请在 Azure AD → 应用注册 → 你的应用 → 概述 中复制目录（租户）ID。"
-    },
-    "dingtalk": {
-      "step1": "打开 open.dingtalk.com → 登录 → 进入应用开发 → 创建企业内部应用 → 填写名称",
-      "step2": "在应用页面 → 添加应用能力 → 找到「机器人」 → 点击添加",
-      "step3": "在应用信息页面 → 复制 AppKey 和 AppSecret",
-      "step4": "消息接收模式选择 Stream 模式（推荐，无需公网 IP）",
-      "step5": "将 AppKey 和 AppSecret 填入上方 → 点击保存配置",
-      "step6": "发布应用 → 在钉钉中找到机器人，发送消息测试",
-      "note": "Stream 模式无需公网 IP 和回调地址，只需 AppKey 和 AppSecret 即可连接。"
-    },
-    "wecom": {
-      "step1": "登录 work.weixin.qq.com → 应用管理 → 自建应用 → 创建应用",
-      "step2": "在应用详情页 → 复制 CorpID（企业ID）、AgentID（应用ID）和 Secret",
-      "step3": "设置 API 接收消息 → 设置 Token 和 EncodingAESKey（可自动生成）",
-      "step4": "将上述信息填入上方 → 点击保存配置 → 复制出现的 Webhook URL",
-      "step5": "将 Webhook URL 粘贴到企业微信「API 接收消息」的 URL 框中 → 保存",
-      "step6": "在企业微信中找到应用，发送消息测试",
-      "note": "回调 URL 必须公网可访问，企微会验证 URL 并推送加密消息。",
-      "ws_step1": "登录 work.weixin.qq.com → 安全与管理 → 管理工具 → 智能机器人",
-      "ws_step2": "点击「创建机器人」→ 选择「手动创建」→ 底部选择「API 模式创建」",
-      "ws_step3": "连接方式选择「使用长连接」（不要选 URL 回调）",
-      "ws_step4": "填写机器人名称、头像，设置可见范围 → 保存",
-      "ws_step5": "复制生成的 Bot ID 和 Secret → 填入上方 → 点击保存配置",
-      "ws_step6": "在企业微信中找到机器人，发送消息测试",
-      "ws_note": "WebSocket 长连接模式无需公网 IP、回调地址或域名备案（ICP），连接由系统自动管理。"
+    "users": {
+      "user": "用户",
+      "email": "邮箱",
+      "joined": "注册时间",
+      "source": "来源",
+      "msgQuota": "消息配额",
+      "period": "周期",
+      "agents": "学习助手",
+      "ttl": "存活时间",
+      "msgLimit": "消息限额",
+      "maxAgents": "最多学习助手",
+      "agentTTL": "助手存活时长(h)"
     }
   }
 }

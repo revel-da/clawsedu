@@ -122,7 +122,7 @@ export default function AdminCompanies() {
     if (user?.role !== 'platform_admin') {
         return (
             <div style={{ padding: '60px', textAlign: 'center', color: 'var(--text-tertiary)' }}>
-                {t('common.noPermission', 'You do not have permission to access this page.')}
+                {t('common.noPermission', '你没有权限访问此页面。')}
             </div>
         );
     }

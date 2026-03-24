@@ -193,20 +193,20 @@ export default function UserManagement() {
                         gap: '10px', padding: '10px 16px', fontSize: '11px', fontWeight: 600,
                         color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.05em',
                     }}>
-                        <div>{t('enterprise.users.user', isChinese ? '用户' : 'User')}</div>
+                        <div>{t('enterprise.users.user', 'User')}</div>
                         <div>{t('enterprise.users.email', 'Email')}</div>
                         {/* Created At with sort toggle */}
                         <div
                             style={{ cursor: 'pointer', userSelect: 'none', display: 'flex', alignItems: 'center', gap: '3px' }}
                             onClick={toggleSort}
-                            title={isChinese ? '点击切换排序' : 'Click to toggle sort order'}
+                            title={t('common.toggleSort', 'Click to toggle sort order')}
                         >
-                            {isChinese ? '注册时间' : 'Joined'} {sortOrder === 'asc' ? '↑' : '↓'}
+                            {t('enterprise.users.joined', 'Joined')} {sortOrder === 'asc' ? '↑' : '↓'}
                         </div>
-                        <div>{isChinese ? '来源' : 'Source'}</div>
-                        <div>{t('enterprise.users.msgQuota', isChinese ? '消息配额' : 'Msg Quota')}</div>
-                        <div>{t('enterprise.users.period', isChinese ? '周期' : 'Period')}</div>
-                        <div>{t('enterprise.users.agents', isChinese ? '学习助手' : 'Assistants')}</div>
+                        <div>{t('enterprise.users.source', 'Source')}</div>
+                        <div>{t('enterprise.users.msgQuota', 'Msg Quota')}</div>
+                        <div>{t('enterprise.users.period', 'Period')}</div>
+                        <div>{t('enterprise.users.agents', 'Assistants')}</div>
                         <div>{t('enterprise.users.ttl', 'TTL')}</div>
                         <div></div>
                     </div>
@@ -257,7 +257,7 @@ export default function UserManagement() {
                                         style={{ padding: '4px 10px', fontSize: '11px' }}
                                         onClick={() => editingUserId === user.id ? setEditingUserId(null) : startEdit(user)}
                                     >
-                                        {editingUserId === user.id ? t('common.cancel') : (isChinese ? '✏️ 编辑' : '✏️ Edit')}
+                                        {editingUserId === user.id ? t('common.cancel') : t('common.edit')}
                                     </button>
                                 </div>
                             </div>

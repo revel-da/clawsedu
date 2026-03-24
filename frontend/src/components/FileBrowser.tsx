@@ -160,10 +160,10 @@ export default function FileBrowser({
             await api.write(target, editContent);
             setContent(editContent);
             setEditing(false);
-            showToast('Saved');
+            showToast(t('common.success', 'Saved'));
             onRefresh?.();
         } catch (err: any) {
-            showToast('Save failed: ' + (err.message || ''), 'error');
+            showToast(t('common.error', 'Save failed') + ': ' + (err.message || ''), 'error');
         }
         setSaving(false);
     };
@@ -179,9 +179,9 @@ export default function FileBrowser({
             }
             reload();
             onRefresh?.();
-            showToast('Deleted');
+            showToast(t('common.success', 'Deleted'));
         } catch (err: any) {
-            showToast('Delete failed: ' + (err.message || ''), 'error');
+            showToast(t('common.error', 'Delete failed') + ': ' + (err.message || ''), 'error');
         }
     };
 
@@ -203,10 +203,10 @@ export default function FileBrowser({
                 setUploadProgress(null);
                 reload();
                 onRefresh?.();
-                showToast('Upload successful');
+                showToast(t('common.success', 'Upload successful'));
             } catch (err: any) {
                 setUploadProgress(null);
-                showToast('Upload failed: ' + (err.message || ''), 'error');
+                showToast(t('common.error', 'Upload failed') + ': ' + (err.message || ''), 'error');
             }
         };
         input.click();

@@ -52,10 +52,10 @@ export default function Layout() {
     };
 
     const navItems = [
-        { path: '/dashboard', icon: Icons.Home, label: t('nav.dashboard', 'Desk') },
-        { path: '/plaza', icon: Icons.Grid, label: t('nav.plaza', 'Plaza') },
-        { path: '/interactive', icon: Icons.MessageCircle, label: t('nav.interactive', 'Chat') },
-        { path: '/oversight', icon: Icons.Users, label: t('nav.oversight', 'Team') },
+        { path: '/dashboard', icon: Icons.Home, label: t('nav.dashboard', '学习主页') },
+        { path: '/plaza', icon: Icons.Grid, label: t('nav.plaza', '学习广场') },
+        { path: '/interactive', icon: Icons.MessageCircle, label: t('nav.interactive', '上课 / 练习') },
+        { path: '/oversight', icon: Icons.Users, label: t('nav.oversight', '学习监督') },
     ];
 
     return (
@@ -325,7 +325,7 @@ export default function Layout() {
                         className={({ isActive }) => `dock-item ${isActive ? 'active' : ''}`}
                     >
                         <span className="dock-icon"><Icons.Plus /></span>
-                        <span className="dock-label">{t('nav.newAgent', 'Create')}</span>
+                        <span className="dock-label">{t('nav.newAgent', '新建助手')}</span>
                     </NavLink>
                 </nav>
 
@@ -340,7 +340,7 @@ export default function Layout() {
                                     {user?.display_name}
                                 </div>
                                 <div style={{ fontSize: '12px', color: 'var(--text-tertiary)' }}>
-                                    {user?.role === 'platform_admin' ? 'Admin' : 'Student'}
+                                    {user?.role === 'platform_admin' ? t('roles.platformAdmin', 'Admin') : t('roles.member', 'Student')}
                                 </div>
                             </div>
                         )}

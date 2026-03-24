@@ -382,7 +382,7 @@ function SkillsTab() {
             <div style={{ marginBottom: '12px' }}>
                 <h3>{t('enterprise.tabs.skills', 'Skill Registry')}</h3>
                 <p style={{ fontSize: '13px', color: 'var(--text-tertiary)', marginTop: '4px' }}>
-                    Manage global skills. Each skill is a folder with a SKILL.md file. Skills selected during agent creation are copied to the agent's workspace.
+                    {t('enterprise.skills.registryDesc', '管理全局技能。每个技能都是一个包含 SKILL.md 文件的文件夹。在助手创建期间选择的技能会被复制到助手的工作区。')}
                 </p>
             </div>
             <FileBrowser
@@ -729,7 +729,7 @@ export default function EnterpriseSettings() {
             if (res.status === 409) {
                 const data = await res.json();
                 const agents = data.detail?.agents || [];
-                const msg = `This model is used by ${agents.length} agent(s):\n\n${agents.join(', ')}\n\nDelete anyway? (their model config will be cleared)`;
+                const msg = t('enterprise.llm.confirmDeleteWithAgents', { count: agents.length, agents: agents.join(', ') });
                 if (confirm(msg)) {
                     // Retry with force
                     const r2 = await fetch(`/api/enterprise/llm-models/${id}?force=true`, {
@@ -799,7 +799,7 @@ export default function EnterpriseSettings() {
                     <div>
                         {openmaicServerProviders && (
                             <div className="card" style={{ marginBottom: '16px' }}>
-                                <h3 style={{ marginBottom: '8px' }}>课堂引擎 Provider 视图</h3>
+                                <h3 style={{ marginBottom: '8px' }}>{t('enterprise.openmaic.providerView', '课堂引擎 Provider 视图')}</h3>
                                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0,1fr))', gap: '8px', fontSize: '12px' }}>
                                     <div>LLM: {Object.keys(openmaicServerProviders.providers || {}).length}</div>
                                     <div>TTS: {Object.keys(openmaicServerProviders.tts || {}).length}</div>
@@ -831,7 +831,7 @@ export default function EnterpriseSettings() {
 
                         {showAddModel && (
                             <div className="card" style={{ marginBottom: '16px' }}>
-                                <h3 style={{ marginBottom: '16px' }}>{editingModelId ? 'Edit Model' : t('enterprise.llm.addModel')}</h3>
+                                <h3 style={{ marginBottom: '16px' }}>{editingModelId ? t('enterprise.llm.editModel', '编辑模型') : t('enterprise.llm.addModel')}</h3>
                                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                                     <div className="form-group">
                                         <label className="form-label">Provider</label>
@@ -905,7 +905,7 @@ export default function EnterpriseSettings() {
                                     <button className="btn btn-secondary" style={{ display: 'flex', alignItems: 'center', gap: '6px' }} disabled={!modelForm.model || (!editingModelId && !modelForm.api_key)} onClick={async () => {
                                         const btn = document.activeElement as HTMLButtonElement;
                                         const origText = btn?.textContent || '';
-                                        if (btn) btn.textContent = 'Testing...';
+                                        if (btn) btn.textContent = t('common.testing', 'Testing...');
                                         try {
                                             const token = localStorage.getItem('token');
                                             const testData: any = { providerType: modelForm.provider, model: modelForm.model, baseUrl: modelForm.base_url || undefined, requiresApiKey: true };
@@ -921,14 +921,14 @@ export default function EnterpriseSettings() {
                                                 if (btn) { btn.textContent = `OK (${result.latency_ms}ms)`; btn.style.color = 'var(--success)'; }
                                                 setTimeout(() => { if (btn) { btn.textContent = origText; btn.style.color = ''; } }, 3000);
                                             } else {
-                                                alert(`Test failed: ${result.message || result.error || 'Unknown error'}\n\nLatency: ${result.latency_ms || 0}ms`);
+                                                alert(`${t('common.testFailed', 'Test failed')}: ${result.message || result.error || 'Unknown error'}\n\nLatency: ${result.latency_ms || 0}ms`);
                                                 if (btn) btn.textContent = origText;
                                             }
                                         } catch (e: any) {
-                                            alert(`Test error: ${e.message}`);
+                                            alert(`${t('common.error', 'Test error')}: ${e.message}`);
                                             if (btn) btn.textContent = origText;
                                         }
-                                    }}>Test</button>
+                                    }}>{t('common.test', 'Test')}</button>
                                     <button className="btn btn-primary" onClick={() => {
                                         const data = {
                                             ...modelForm,
@@ -993,12 +993,12 @@ export default function EnterpriseSettings() {
                         </div>
                         {models.length > 0 && (
                             <div className="card" style={{ marginTop: '16px' }}>
-                                <h3 style={{ marginBottom: '12px' }}>用户可选模型费用预览</h3>
+                                <h3 style={{ marginBottom: '12px' }}>{t('enterprise.llm.pricingPreview', '用户可选模型费用预览')}</h3>
                                 <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1fr', gap: '8px', fontSize: '12px', color: 'var(--text-tertiary)', marginBottom: '8px' }}>
-                                    <div>模型</div>
-                                    <div>输入/输出(每百万)</div>
-                                    <div>示例(各1000 token)</div>
-                                    <div>免费额度/月</div>
+                                    <div>{t('enterprise.llm.model', '模型')}</div>
+                                    <div>{t('enterprise.llm.inputOutputPerMillion', '输入/输出(每百万)')}</div>
+                                    <div>{t('enterprise.llm.example1000', '示例(各1000 token)')}</div>
+                                    <div>{t('enterprise.llm.freeTokensPerMonth', '免费额度/月')}</div>
                                 </div>
                                 {models.filter(m => m.enabled).map((m) => (
                                     <div key={`pricing-${m.id}`} style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1fr', gap: '8px', padding: '8px 0', borderTop: '1px solid var(--border-subtle)' }}>

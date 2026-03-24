@@ -154,8 +154,8 @@ function ToolsManager({ agentId, canManage = false }: { agentId: string; canMana
                                         <button
                                             onClick={() => openConfig(tool)}
                                             style={{ background: 'none', border: '1px solid var(--border-subtle)', borderRadius: '6px', padding: '3px 8px', fontSize: '11px', cursor: 'pointer', color: 'var(--text-secondary)' }}
-                                            title="Configure per-agent settings"
-                                        >⚙️ Config</button>
+                                            title={t('enterprise.tools.configure', 'Configure per-agent settings')}
+                                        >⚙️ {t('enterprise.tools.configure', 'Config')}</button>
                                     )}
                                     {canManage && tool.source === 'user_installed' && tool.agent_tool_id && (
                                         <button
@@ -1850,8 +1850,8 @@ function AgentDetailInner() {
                             {activityLogs && activityLogs.length > 0 && (
                                 <div className="card">
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-                                        <h3 style={{ fontSize: '14px', fontWeight: 600 }}>📊 Recent Activity</h3>
-                                        <button className="btn btn-ghost" style={{ fontSize: '12px' }} onClick={() => setActiveTab('activityLog')}>View All →</button>
+                                        <h3 style={{ fontSize: '14px', fontWeight: 600 }}>📊 {t('agent.activityLog.recentTitle', '最近动态')}</h3>
+                                        <button className="btn btn-ghost" style={{ fontSize: '12px' }} onClick={() => setActiveTab('activityLog')}>{t('common.viewAll', '查看全部')} →</button>
                                     </div>
                                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                                         {activityLogs.slice(0, 5).map((log: any, i: number) => (
@@ -2382,9 +2382,9 @@ function AgentDetailInner() {
                                                         {isExpanded && (
                                                             <div style={{ padding: '0 16px 12px', borderTop: '1px solid var(--border-subtle)' }}>
                                                                 {msgs.length === 0 ? (
-                                                                    <div style={{ padding: '12px 0', fontSize: '12px', color: 'var(--text-tertiary)' }}>Loading...</div>
-                                                                ) : (
-                                                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '8px' }}>
+                                                                     <div style={{ padding: '12px 0', fontSize: '12px', color: 'var(--text-tertiary)' }}>{t('common.loading')}</div>
+                                                                 ) : (
+                                                                     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '8px' }}>
                                                                         {msgs.map((msg: any, mi: number) => {
                                                                             if (msg.role === 'tool_call') {
                                                                                 const tName = msg.toolName || (() => { try { return JSON.parse(msg.content || '{}').name; } catch { return ''; } })() || 'tool';
@@ -2745,12 +2745,12 @@ function AgentDetailInner() {
                                 <div style={{ display: 'flex', alignItems: 'center', padding: '10px 12px 0', gap: '4px', borderBottom: '1px solid var(--border-subtle)' }}>
                                     <button onClick={() => setChatScope('mine')}
                                         style={{ flex: 1, padding: '5px 0', background: 'none', border: 'none', cursor: 'pointer', fontSize: '12px', fontWeight: chatScope === 'mine' ? 600 : 400, color: chatScope === 'mine' ? 'var(--text-primary)' : 'var(--text-tertiary)', borderBottom: chatScope === 'mine' ? '2px solid var(--accent-primary)' : '2px solid transparent', paddingBottom: '8px' }}>
-                                        My Sessions
+                                        {t('agent.chat.mySessions', 'My Sessions')}
                                     </button>
                                     {isAdmin && (
                                         <button onClick={() => { setChatScope('all'); fetchAllSessions(); }}
                                             style={{ flex: 1, padding: '5px 0', background: 'none', border: 'none', cursor: 'pointer', fontSize: '12px', fontWeight: chatScope === 'all' ? 600 : 400, color: chatScope === 'all' ? 'var(--text-primary)' : 'var(--text-tertiary)', borderBottom: chatScope === 'all' ? '2px solid var(--accent-primary)' : '2px solid transparent', paddingBottom: '8px' }}>
-                                            All Users
+                                            {t('agent.chat.allUsers', 'All Users')}
                                         </button>
                                     )}
                                 </div>
@@ -2762,7 +2762,7 @@ function AgentDetailInner() {
                                             style={{ width: '100%', padding: '5px 8px', background: 'none', border: '1px solid var(--border-subtle)', borderRadius: '6px', cursor: 'pointer', fontSize: '12px', color: 'var(--text-secondary)', textAlign: 'left', display: 'flex', alignItems: 'center', gap: '6px' }}
                                             onMouseEnter={e => { e.currentTarget.style.background = 'var(--bg-secondary)'; e.currentTarget.style.color = 'var(--text-primary)'; }}
                                             onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = 'var(--text-secondary)'; }}>
-                                            + New Session
+                                            + {t('agent.chat.newSession', 'New Session')}
                                         </button>
                                     </div>
                                 )}
@@ -2773,7 +2773,7 @@ function AgentDetailInner() {
                                         sessionsLoading ? (
                                             <div style={{ padding: '20px 12px', fontSize: '12px', color: 'var(--text-tertiary)' }}>{t('common.loading')}</div>
                                         ) : sessions.length === 0 ? (
-                                            <div style={{ padding: '20px 12px', fontSize: '12px', color: 'var(--text-tertiary)' }}>No sessions yet.<br />Click "+ New Session" to start.</div>
+                                            <div style={{ padding: '20px 12px', fontSize: '12px', color: 'var(--text-tertiary)' }}>{t('agent.chat.noSessions', 'No sessions yet.')}<br />{t('agent.chat.startFirst', 'Click "+ New Session" to start.')}</div>
                                         ) : sessions.map((s: any) => {
                                             const isActive = activeSession?.id === s.id;
                                             const isOwn = s.user_id === String(currentUser?.id);
@@ -2878,9 +2878,9 @@ function AgentDetailInner() {
                             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', position: 'relative', minWidth: 0, overflow: 'hidden' }}>
                                 {!activeSession ? (
                                     <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-tertiary)', fontSize: '13px', flexDirection: 'column', gap: '8px' }}>
-                                        <div>{i18n.language?.startsWith('zh') ? '未选择会话' : 'No session selected'}</div>
+                                        <div>{t('agent.chat.noSessionSelected', 'No session selected')}</div>
                                         <button className="btn btn-secondary" onClick={createNewSession} style={{ fontSize: '12px' }}>
-                                            {i18n.language?.startsWith('zh') ? '开始新会话' : 'Start a new session'}
+                                            {t('agent.chat.startNewSession', 'Start a new session')}
                                         </button>
                                     </div>
                                 ) : (activeSession.user_id && currentUser && activeSession.user_id !== String(currentUser.id)) || activeSession.source_channel === 'agent' || activeSession.participant_type === 'agent' ? (
@@ -2889,12 +2889,8 @@ function AgentDetailInner() {
                                         <div ref={historyContainerRef} onScroll={handleHistoryScroll} style={{ flex: 1, overflowY: 'auto', padding: '12px 16px' }}>
                                             <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginBottom: '12px', padding: '4px 8px', background: 'var(--bg-secondary)', borderRadius: '4px', display: 'inline-block' }}>
                                                 {activeSession.source_channel === 'agent'
-                                                    ? (i18n.language?.startsWith('zh')
-                                                        ? `🤖 学习助手对话 · ${activeSession.username || '学习助手'}`
-                                                        : `🤖 Assistant Conversation · ${activeSession.username || 'Assistants'}`)
-                                                    : (i18n.language?.startsWith('zh')
-                                                        ? `只读 · ${activeSession.username || '用户'}`
-                                                        : `Read-only · ${activeSession.username || 'User'}`)}
+                                                    ? t('agent.chat.agentConversationWith', { name: activeSession.username || t('common.assistant') })
+                                                    : t('agent.chat.readOnlyWith', { name: activeSession.username || t('auth.displayName') })}
                                             </div>
                                             {historyMsgs.map((m: any, i: number) => {
                                                 if (m.role === 'tool_call') {
@@ -2905,7 +2901,7 @@ function AgentDetailInner() {
                                                         <div key={i} style={{ display: 'flex', gap: '8px', marginBottom: '6px', paddingLeft: '36px', minWidth: 0 }}>
                                                             <details style={{ flex: 1, minWidth: 0, borderRadius: '8px', background: 'var(--accent-subtle)', border: '1px solid var(--accent-subtle)', fontSize: '12px', overflow: 'hidden' }}>
                                                                 <summary style={{ padding: '6px 10px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', userSelect: 'none', listStyle: 'none', overflow: 'hidden' }}>
-                                                                    <span style={{ fontSize: '13px' }}>⚡</span>
+                                                                                            <span style={{ fontSize: '13px' }}>{t('agent.chat.toolCall', '⚡')}</span>
                                                                     <span style={{ fontWeight: 600, color: 'var(--accent-text)' }}>{tName}</span>
                                                                     {tArgs && typeof tArgs === 'object' && Object.keys(tArgs).length > 0 && <span style={{ color: 'var(--text-tertiary)', fontSize: '11px', fontFamily: 'var(--font-mono)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1 }}>{`(${Object.entries(tArgs).map(([k, v]) => `${k}: ${typeof v === 'string' ? v.slice(0, 30) : JSON.stringify(v)}`).join(', ')})`}</span>}
                                                                 </summary>
@@ -2925,11 +2921,11 @@ function AgentDetailInner() {
                                                                     background: 'rgba(147, 130, 220, 0.08)', borderRadius: '6px',
                                                                     border: '1px solid rgba(147, 130, 220, 0.15)',
                                                                 }}>
-                                                                    <summary style={{
-                                                                        padding: '6px 10px', cursor: 'pointer',
-                                                                        color: 'rgba(147, 130, 220, 0.9)', fontWeight: 500,
-                                                                        userSelect: 'none', display: 'flex', alignItems: 'center', gap: '4px',
-                                                                    }}>Thinking</summary>
+                                                                        <summary style={{
+                                                                            padding: '6px 10px', cursor: 'pointer',
+                                                                            color: 'rgba(147, 130, 220, 0.9)', fontWeight: 500,
+                                                                            userSelect: 'none', display: 'flex', alignItems: 'center', gap: '4px',
+                                                                        }}>{t('agent.chat.thinking', 'Thinking')}</summary>
                                                                     <div style={{
                                                                         padding: '4px 10px 8px',
                                                                         fontSize: '12px', lineHeight: '1.6',
@@ -2960,13 +2956,13 @@ function AgentDetailInner() {
                                                                                 background: 'rgba(147, 130, 220, 0.08)', borderRadius: '6px',
                                                                                 border: '1px solid rgba(147, 130, 220, 0.15)',
                                                                             }}>
-                                                                                <summary style={{
-                                                                                    padding: '6px 10px', cursor: 'pointer',
-                                                                                    color: 'rgba(147, 130, 220, 0.9)', fontWeight: 500,
-                                                                                    userSelect: 'none', display: 'flex', alignItems: 'center', gap: '4px',
-                                                                                }}>
-                                                                                    💭 Thinking
-                                                                                </summary>
+                                                                                    <summary style={{
+                                                                                        padding: '6px 10px', cursor: 'pointer',
+                                                                                        color: 'rgba(147, 130, 220, 0.9)', fontWeight: 500,
+                                                                                        userSelect: 'none', display: 'flex', alignItems: 'center', gap: '4px',
+                                                                                    }}>
+                                                                                        💭 {t('agent.chat.thinking', 'Thinking')}
+                                                                                    </summary>
                                                                                 <div style={{
                                                                                     padding: '4px 10px 8px',
                                                                                     fontSize: '12px', lineHeight: '1.6',
@@ -3248,9 +3244,9 @@ function AgentDetailInner() {
                                     {(logFilter === 'backend' || logFilter === 'heartbeat' || logFilter === 'schedule' || logFilter === 'messages') && (
                                         <>
                                             <span style={{ color: 'var(--text-tertiary)', fontSize: '11px' }}>│</span>
-                                            {filterBtn('heartbeat', '💓 Heartbeat', true)}
-                                            {filterBtn('schedule', '⏰ Schedule/Cron', true)}
-                                            {filterBtn('messages', '📨 Messages', true)}
+                                            {filterBtn('heartbeat', '💓 ' + t('agent.tabs.mind', 'Heartbeat'), true)}
+                                            {filterBtn('schedule', '⏰ ' + t('agent.tabs.tasks', 'Schedule/Cron'), true)}
+                                            {filterBtn('messages', '📨 ' + t('nav.messages', 'Messages'), true)}
                                         </>
                                     )}
                                     </>)}

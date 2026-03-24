@@ -427,7 +427,7 @@ For humans, the message is delivered via their available channel (e.g. Feishu).`
                                 {/* JSON Import */}
                                 <div style={{ marginTop: '8px' }}>
                                     <label className="btn btn-ghost" style={{ fontSize: '12px', cursor: 'pointer', color: 'var(--text-tertiary)' }}>
-                                        ↑ Import from JSON
+                                        ↑ {t('agent.workspace.importFromJson', '从 JSON 导入')}
                                         <input type="file" accept=".json" style={{ display: 'none' }} onChange={e => {
                                             const file = e.target.files?.[0];
                                             if (!file) return;
