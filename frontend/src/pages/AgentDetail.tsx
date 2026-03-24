@@ -1679,7 +1679,7 @@ function AgentDetailInner() {
                         }
                         return true;
                     }).map((tab) => (
-                        <div key={tab} className={`tab ${activeTab === tab ? 'active' : ''}`} onClick={() => setActiveTab(tab)}>
+                        <div key={tab} className={`tab tab-${tab} ${activeTab === tab ? 'active' : ''}`} onClick={() => setActiveTab(tab)}>
                             {t(`agent.tabs.${tab}`)}
                         </div>
                     ))}

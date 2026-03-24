@@ -194,6 +194,31 @@ button.glass-panel:hover {
   color: var(--text-primary);
 }
 
+.btn-secondary {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1.5px solid var(--border-strong);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary-base);
+  background: var(--bg-hover);
+  transform: translateY(-1px);
+}
+
+.btn-danger {
+  background: rgba(244, 63, 94, 0.1);
+  color: var(--accent-rose);
+  border: 1.5px solid rgba(244, 63, 94, 0.2);
+}
+
+.btn-danger:hover {
+  background: var(--accent-rose);
+  color: #fff;
+  border-color: var(--accent-rose);
+}
+
 /* 4. Inputs */
 .input-field {
   background: var(--bg-input);
@@ -359,5 +384,56 @@ button.glass-panel:hover {
   --error: var(--accent-rose);
   --error-subtle: rgba(244, 63, 94, 0.15);
   --status-running: #2DD4BF;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Tabs & Navigation
+   ═══════════════════════════════════════════════════════ */
+.tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding: 4px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  width: fit-content;
+}
+
+.tab {
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s var(--ease-smooth);
+  border: 1px solid transparent;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tab:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.tab.active {
+  color: var(--primary-base);
+  background: var(--bg-surface);
+  border-color: var(--primary-base);
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.1);
+}
+
+/* Specific borders for Status, Aware, Mind as requested */
+.tab-status, .tab-aware, .tab-mind {
+  border: 1.5px solid var(--border-strong);
+  background: var(--bg-surface);
+}
+
+.tab-status:hover, .tab-aware:hover, .tab-mind:hover {
+  border-color: var(--primary-base);
+  background: var(--bg-surface);
 }
 

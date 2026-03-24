@@ -788,7 +788,7 @@ export default function EnterpriseSettings() {
 
                 <div className="tabs">
                     {(['info', 'llm', 'tools', 'skills', 'invites', 'quotas', 'users', 'org', 'approvals', 'audit'] as const).map(tab => (
-                        <div key={tab} className={`tab ${activeTab === tab ? 'active' : ''}`} onClick={() => setActiveTab(tab)}>
+                        <div key={tab} className={`tab tab-${tab} ${activeTab === tab ? 'active' : ''}`} onClick={() => setActiveTab(tab)}>
                             {tab === 'quotas' ? t('enterprise.tabs.quotas', 'Quotas') : tab === 'users' ? t('enterprise.tabs.users', 'Users') : tab === 'invites' ? t('enterprise.tabs.invites', 'Invitations') : t(`enterprise.tabs.${tab}`)}
                         </div>
                     ))}
