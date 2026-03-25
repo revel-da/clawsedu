@@ -234,7 +234,7 @@ function CopyBtn({ url }: { url: string }) {
 
 // ─── Main Component ─────────────────────────────────────
 export default function ChannelConfig({ mode, agentId, canManage = true, values, onChange }: ChannelConfigProps) {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const queryClient = useQueryClient();
 
     // Collapsible state per channel
@@ -643,7 +643,7 @@ export default function ChannelConfig({ mode, agentId, canManage = true, values,
                     <div style={{ padding: '0 16px 16px', borderTop: '1px solid var(--border-subtle)' }}>
                         {!canManage ? (
                             <div style={{ fontSize: '12px', color: 'var(--text-tertiary)', fontStyle: 'italic', padding: '12px', background: 'var(--bg-secondary)', borderRadius: '6px' }}>
-                                Only the creator or admin can configure communication channels.
+                                {i18n.language?.startsWith('zh') ? '只有创建者或管理员可以配置通信渠道。' : 'Only the creator or admin can configure communication channels.'}
                             </div>
                         ) : isConfigured && !isEditing ? (
                             /* ── Configured view ── */
@@ -653,14 +653,14 @@ export default function ChannelConfig({ mode, agentId, canManage = true, values,
                                     <div style={{ background: 'var(--bg-secondary)', borderRadius: '6px', padding: '10px', fontSize: '12px', marginBottom: '12px' }}>
                                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '6px' }}>
                                             <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#00D6B9', display: 'inline-block' }}></span>
-                                            <span style={{ color: 'var(--text-secondary)' }}>Connected via WebSocket (No callback URL needed)</span>
+                                            <span style={{ color: 'var(--text-secondary)' }}>{i18n.language?.startsWith('zh') ? '通过 WebSocket 连接（不需要回调 URL）' : 'Connected via WebSocket (No callback URL needed)'}</span>
                                         </div>
                                         <div style={{ fontSize: '11px', color: 'var(--text-tertiary)' }}>App ID: <code>{config.app_id}</code></div>
                                     </div>
                                 )}
                                 {ch.id === 'feishu' && configConnMode !== 'websocket' && (
                                     <div style={{ fontSize: '12px', color: 'var(--text-tertiary)', marginBottom: '8px' }}>
-                                        <div style={{ marginBottom: '4px' }}>Mode: <strong>Webhook</strong></div>
+                                        <div style={{ marginBottom: '4px' }}>{i18n.language?.startsWith('zh') ? '模式：' : 'Mode: '}<strong>Webhook</strong></div>
                                         <div>App ID: <code>{config.app_id}</code></div>
                                     </div>
                                 )}
@@ -670,7 +670,7 @@ export default function ChannelConfig({ mode, agentId, canManage = true, values,
                                     <div style={{ background: 'var(--bg-secondary)', borderRadius: '6px', padding: '10px', fontSize: '12px', marginBottom: '12px' }}>
                                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                                             <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#07C160', display: 'inline-block' }}></span>
-                                            <span style={{ color: 'var(--text-secondary)' }}>Connected via WebSocket (No callback URL needed)</span>
+                                            <span style={{ color: 'var(--text-secondary)' }}>{i18n.language?.startsWith('zh') ? '通过 WebSocket 连接（不需要回调 URL）' : 'Connected via WebSocket (No callback URL needed)'}</span>
                                         </div>
                                     </div>
                                 )}
@@ -688,28 +688,28 @@ export default function ChannelConfig({ mode, agentId, canManage = true, values,
 
                                 {/* Discord extra hint */}
                                 {ch.id === 'discord' && (
-                                    <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginBottom: '8px' }}>Use <code>/ask message:&lt;your question&gt;</code> to talk to this agent</div>
+                                    <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginBottom: '8px' }} dangerouslySetInnerHTML={{ __html: i18n.language?.startsWith('zh') ? '使用 <code>/ask message:&lt;你的问题&gt;</code> 来和此助手对话' : 'Use <code>/ask message:&lt;your question&gt;</code> to talk to this agent' }} />
                                 )}
 
                                 {/* DingTalk stream mode hint */}
                                 {ch.id === 'dingtalk' && (
                                     <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginBottom: '8px', padding: '8px 10px', background: 'var(--bg-secondary)', borderRadius: '6px' }}>
-                                        Stream mode active. No webhook URL needed.
+                                        {i18n.language?.startsWith('zh') ? '流式模式已激活。不需要 webhook URL。' : 'Stream mode active. No webhook URL needed.'}
                                     </div>
                                 )}
 
                                 {/* Atlassian status */}
                                 {ch.id === 'atlassian' && (
                                     <div style={{ background: 'var(--bg-secondary)', borderRadius: '6px', padding: '10px', fontSize: '12px', marginBottom: '12px' }}>
-                                        <div style={{ color: 'var(--text-tertiary)', marginBottom: '4px' }}>Status</div>
-                                        <div style={{ color: 'var(--text-primary)', fontWeight: 500 }}>API Key configured — Jira / Confluence / Compass tools available</div>
+                                        <div style={{ color: 'var(--text-tertiary)', marginBottom: '4px' }}>{i18n.language?.startsWith('zh') ? '状态' : 'Status'}</div>
+                                        <div style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{i18n.language?.startsWith('zh') ? 'API Key 已配置 — 可使用 Jira / Confluence / Compass 工具' : 'API Key configured — Jira / Confluence / Compass tools available'}</div>
                                         {config.cloud_id && <div style={{ color: 'var(--text-tertiary)', marginTop: '4px', fontSize: '11px' }}>Cloud ID: <code>{config.cloud_id}</code></div>}
                                     </div>
                                 )}
                                 {ch.id === 'atlassian' && atlassianTestResult && (
                                     <div style={{ padding: '8px 12px', borderRadius: '6px', fontSize: '12px', marginBottom: '10px', background: atlassianTestResult.ok ? 'rgba(16,185,129,0.08)' : 'rgba(239,68,68,0.08)', border: `1px solid ${atlassianTestResult.ok ? 'rgba(16,185,129,0.25)' : 'rgba(239,68,68,0.25)'}`, color: atlassianTestResult.ok ? 'rgb(5,150,105)' : 'rgb(220,38,38)' }}>
                                         {atlassianTestResult.ok
-                                            ? `${atlassianTestResult.message || `Connected — ${atlassianTestResult.tool_count} tools available`}`
+                                            ? `${atlassianTestResult.message || (i18n.language?.startsWith('zh') ? `已连接 — ${atlassianTestResult.tool_count} 个工具可用` : `Connected — ${atlassianTestResult.tool_count} tools available`)}`
                                             : `${atlassianTestResult.error}`}
                                     </div>
                                 )}
@@ -721,7 +721,7 @@ export default function ChannelConfig({ mode, agentId, canManage = true, values,
                                 <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                                     {ch.hasTestConnection && (
                                         <button className="btn btn-secondary" style={{ fontSize: '12px', padding: '4px 12px' }} onClick={testAtlassian} disabled={atlassianTesting}>
-                                            {atlassianTesting ? 'Testing...' : 'Test Connection'}
+                                            {atlassianTesting ? (i18n.language?.startsWith('zh') ? '测试中...' : 'Testing...') : (i18n.language?.startsWith('zh') ? '测试连接' : 'Test Connection')}
                                         </button>
                                     )}
                                     <button className="btn btn-secondary" style={{ fontSize: '12px', padding: '4px 12px' }}
@@ -766,9 +766,9 @@ export default function ChannelConfig({ mode, agentId, canManage = true, values,
                                             }
                                             setForms(prev => ({ ...prev, [ch.id]: prefill }));
                                             setEditing(ch.id, true);
-                                        }}>Edit</button>
+                                        }}>{t('common.edit', 'Edit')}</button>
                                     <button className="btn btn-danger" style={{ fontSize: '12px', padding: '4px 12px' }}
-                                        onClick={() => deleteMutation.mutate({ ch })}>Disconnect</button>
+                                        onClick={() => deleteMutation.mutate({ ch })}>{i18n.language?.startsWith('zh') ? '断开连接' : 'Disconnect'}</button>
                                 </div>
                             </div>
                         ) : (
@@ -777,17 +777,17 @@ export default function ChannelConfig({ mode, agentId, canManage = true, values,
                                 {/* Connection mode toggle (feishu, wecom) */}
                                 {ch.connectionMode && (
                                     <div style={{ marginBottom: '8px' }}>
-                                        <label style={{ fontSize: '12px', fontWeight: 500, display: 'block', marginBottom: '8px' }}>Connection Mode</label>
+                                        <label style={{ fontSize: '12px', fontWeight: 500, display: 'block', marginBottom: '8px' }}>{i18n.language?.startsWith('zh') ? '连接模式' : 'Connection Mode'}</label>
                                         <div style={{ display: 'flex', gap: '16px', marginBottom: '8px' }}>
                                             <label style={{ fontSize: '12px', display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}>
                                                 <input type="radio" name={`${ch.id}_connection_mode`} value="websocket" checked={connMode === 'websocket'}
                                                     onChange={() => setConnectionModes(prev => ({ ...prev, [ch.id]: 'websocket' }))} />
-                                                WebSocket (Recommended)
+                                                {i18n.language?.startsWith('zh') ? 'WebSocket (推荐)' : 'WebSocket (Recommended)'}
                                             </label>
                                             <label style={{ fontSize: '12px', display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}>
                                                 <input type="radio" name={`${ch.id}_connection_mode`} value="webhook" checked={connMode === 'webhook'}
                                                     onChange={() => setConnectionModes(prev => ({ ...prev, [ch.id]: 'webhook' }))} />
-                                                Webhook
+                                                {i18n.language?.startsWith('zh') ? 'Webhook' : 'Webhook'}
                                             </label>
                                         </div>
                                     </div>
@@ -803,10 +803,8 @@ export default function ChannelConfig({ mode, agentId, canManage = true, values,
                                 {/* Atlassian extra hints */}
                                 {ch.id === 'atlassian' && (
                                     <>
-                                        <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginTop: '-4px' }}>
-                                            Service account key starts with <code>ATSTT</code>. Personal API token: base64-encode <code>email:token</code> and prefix with <code>Basic </code>
-                                        </div>
-                                        <div style={{ fontSize: '11px', color: 'var(--text-tertiary)' }}>Required for multi-site setups. Find it at <code>your-site.atlassian.net/_edge/tenant_info</code></div>
+                                        <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginTop: '-4px' }} dangerouslySetInnerHTML={{ __html: i18n.language?.startsWith('zh') ? '服务号密钥以 <code>ATSTT</code> 开头。个人 API 令牌：对 <code>email:token</code> 进行 base64 编码，并加上 <code>Basic </code> 前缀' : 'Service account key starts with <code>ATSTT</code>. Personal API token: base64-encode <code>email:token</code> and prefix with <code>Basic </code>' }} />
+                                        <div style={{ fontSize: '11px', color: 'var(--text-tertiary)' }} dangerouslySetInnerHTML={{ __html: i18n.language?.startsWith('zh') ? '多站点设置必需。在 <code>your-site.atlassian.net/_edge/tenant_info</code> 查找' : 'Required for multi-site setups. Find it at <code>your-site.atlassian.net/_edge/tenant_info</code>' }} />
                                     </>
                                 )}
 
@@ -818,9 +816,9 @@ export default function ChannelConfig({ mode, agentId, canManage = true, values,
                                             saveMutation.mutate({ ch, data: payload });
                                         }}
                                         disabled={!allRequired || saveMutation.isPending}>
-                                        {saveMutation.isPending ? t('common.loading') : (isEditing ? 'Save Changes' : t('agent.settings.channel.saveChannel'))}
+                                        {saveMutation.isPending ? t('common.loading') : (isEditing ? (i18n.language?.startsWith('zh') ? '保存更改' : 'Save Changes') : t('agent.settings.channel.saveChannel'))}
                                     </button>
-                                    {isEditing && <button className="btn btn-secondary" style={{ fontSize: '12px' }} onClick={() => setEditing(ch.id, false)}>Cancel</button>}
+                                    {isEditing && <button className="btn btn-secondary" style={{ fontSize: '12px' }} onClick={() => setEditing(ch.id, false)}>{t('common.cancel', 'Cancel')}</button>}
                                 </div>
                             </div>
                         )}
@@ -849,7 +847,7 @@ export default function ChannelConfig({ mode, agentId, canManage = true, values,
                             <div style={{ fontWeight: 500, fontSize: '13px' }}>{t(ch.nameKey, ch.nameFallback)}</div>
                             <div style={{ fontSize: '11px', color: 'var(--text-tertiary)' }}>{ch.desc}</div>
                         </div>
-                        <span style={{ fontSize: '10px', padding: '2px 8px', borderRadius: '10px', background: 'var(--bg-secondary)', color: 'var(--text-tertiary)', fontWeight: 500 }}>Configure in Settings</span>
+                        <span style={{ fontSize: '10px', padding: '2px 8px', borderRadius: '10px', background: 'var(--bg-secondary)', color: 'var(--text-tertiary)', fontWeight: 500 }}>{i18n.language?.startsWith('zh') ? '在设置中配置' : 'Configure in Settings'}</span>
                     </div>
                 ))}
             </div>

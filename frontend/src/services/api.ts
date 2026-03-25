@@ -22,7 +22,13 @@ async function request<T>(url: string, options: RequestInit = {}): Promise<T> {
             window.location.href = '/login';
             throw new Error('Session expired');
         }
-        const error = await res.json().catch(() => ({ detail: 'Request failed' }));
+        const error = await res
+            .clone()
+            .json()
+            .catch(async () => {
+                const text = await res.text().catch(() => '');
+                return { detail: text || `HTTP ${res.status}` };
+            });
         // Pydantic validation errors return detail as an array of objects
         let message = '';
         if (Array.isArray(error.detail)) {
@@ -57,7 +63,13 @@ async function uploadFile(url: string, file: File, extraFields?: Record<string, 
         body: formData,
     });
     if (!res.ok) {
-        const error = await res.json().catch(() => ({ detail: 'Upload failed' }));
+        const error = await res
+            .clone()
+            .json()
+            .catch(async () => {
+                const text = await res.text().catch(() => '');
+                return { detail: text || `HTTP ${res.status}` };
+            });
         throw new Error(error.detail || `HTTP ${res.status}`);
     }
     return res.json();

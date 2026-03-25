@@ -68,38 +68,38 @@ class AgentManager:
         creator = result.scalar_one_or_none()
         creator_name = creator.display_name if creator else "Unknown"
 
-        soul_content = f"# Personality\n\nI'm {agent.name}, {agent.role_description or 'a digital assistant'}.\n"
+        soul_content = f"# 人格定义\n\n我是 {agent.name}，{agent.role_description or '专属智能助手'}。\n"
         if soul_path.exists():
             template_content = soul_path.read_text()
             soul_content = template_content.replace("{{agent_name}}", agent.name)
-            soul_content = soul_content.replace("{{role_description}}", agent.role_description or "通用助手")
+            soul_content = soul_content.replace("{{role_description}}", agent.role_description or "专属智能助手")
             soul_content = soul_content.replace("{{creator_name}}", creator_name)
             soul_content = soul_content.replace("{{created_at}}", datetime.now(timezone.utc).strftime("%Y-%m-%d"))
 
         if personality:
-            soul_content += f"\n\n## Personality\n{personality}\n"
+            soul_content += f"\n\n## 人格设定\n{personality}\n"
         if boundaries:
-            soul_content += f"\n## Boundaries\n{boundaries}\n"
+            soul_content += f"\n## 行为边界\n{boundaries}\n"
 
         soul_path.write_text(soul_content, encoding="utf-8")
 
         # Ensure memory.md exists
         mem_path = agent_dir / "memory" / "memory.md"
         if not mem_path.exists():
-            mem_path.write_text("# Memory\n\n_Record important information and knowledge here._\n", encoding="utf-8")
+            mem_path.write_text("# 记忆流\n\n_在这个区域记录重要信息或长期知识积累。_\n", encoding="utf-8")
 
         # Ensure reflections.md exists — copy from central template
         refl_path = agent_dir / "memory" / "reflections.md"
         if not refl_path.exists():
             refl_template = Path(__file__).parent.parent / "templates" / "reflections.md"
-            refl_content = refl_template.read_text(encoding="utf-8") if refl_template.exists() else "# Reflections Journal\n"
+            refl_content = refl_template.read_text(encoding="utf-8") if refl_template.exists() else "# 思考日志\n"
             refl_path.write_text(refl_content, encoding="utf-8")
 
         # Ensure HEARTBEAT.md exists — copy from central template
         hb_path = agent_dir / "HEARTBEAT.md"
         if not hb_path.exists():
             hb_template = Path(__file__).parent.parent / "templates" / "HEARTBEAT.md"
-            hb_content = hb_template.read_text(encoding="utf-8") if hb_template.exists() else "# Heartbeat Instructions\n"
+            hb_content = hb_template.read_text(encoding="utf-8") if hb_template.exists() else "# 心跳指令\n"
             hb_path.write_text(hb_content, encoding="utf-8")
 
         # Customize state.json

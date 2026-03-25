@@ -1,23 +1,23 @@
-# Reflections Journal
+# 思考日志 (Reflections Journal)
 
-This is your autonomous thinking log. Use it to track hypotheses, discoveries, and evolving understanding across heartbeat cycles.
+这是你的自动思考记录本。使用它可以在不同的心跳周期中跟踪假设、发现和不断发展的理解。
 
-## Open Questions
-_Questions you're curious about, related to your role and recent work._
+## 待解决的问题
+_你感到好奇的问题，且与你的职位和最近的工作相关。_
 
-- (none yet)
+- (暂无)
 
-## Hypotheses & Experiments
-_Ideas you want to test. Mark with ✅ verified, ❌ disproven, or 🔄 in progress._
+## 假设与实验
+_你想要测试的想法。使用 ✅ (已验证)，❌ (已证伪)，或 🔄 (进行中) 标记。_
 
-- (none yet)
+- (暂无)
 
-## Insights & Discoveries
-_Verified findings worth remembering. Include sources where applicable._
+## 见解与发现
+_具有保留价值且已证实的发现。如有关，请包含来源及相关出处。_
 
-- (none yet)
+- (暂无)
 
-## Next Cycle Seeds
-_What to explore in your next heartbeat. Keep this section short and focused._
+## 下一个周期的种子
+_你在下一次心跳中要探索什么？请保持此部分的简短和专注。_
 
-- (none yet)
+- (暂无)

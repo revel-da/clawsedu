@@ -42,6 +42,8 @@
       "toggleSort": "点击切换排序",
       "close": "关闭",
       "create": "创建",
+      "copy": "复制",
+      "copied": "已复制",
       "noPermission": "你没有权限访问此页面。"
     },
   "auth": {
@@ -448,38 +450,38 @@
       "custom": "自定义",
       "general": "通用",
       "email": "邮件"
-    },
-    "upload": {
-      "success": "上传成功",
-      "failed": "上传失败",
-      "uploading": "上传中..."
-    },
-    "openclaw": {
-      "created": "外部学习助手已创建",
-      "createdDesc2": "你的外部助手已成功注册。请复制下方的指令并发送给你的外部助手以完成配置。",
-      "setupInstruction": "设置指令",
-      "setupInstructionDesc": "复制并发送给你的外部助手。它将自动完成配置。",
-      "keyNote": "此密钥已包含在上述指令中。如果需要手动配置，请单独保存。",
-      "goToAgent": "前往助手详情页",
-      "nativeTitle": "平台托管",
-      "nativeDesc": "在 ClawsEdu 平台上运行的完整助手",
-      "openclawTitle": "关联外部助手",
-      "openclawDesc": "连接你现有的外部助手实例",
-      "basicTitle": "关联外部助手",
-      "basicDesc": "为你的外部助手设置名称和描述。模型、人格和技能将在你的外部助手实例中配置。",
-      "namePlaceholder": "例如：我的本地助教",
-      "rolePlaceholder": "例如：运行在我的 Mac 上的个人助手",
-      "createBtn": "关联助手"
-    }
   },
-  "wizard": {
-    "steps": {
-      "basicInfo": "基本信息",
-      "personality": "人格设定",
-      "skills": "技能配置",
-      "permissions": "权限设置",
-      "channel": "通道绑定"
-    },
+  "upload": {
+    "success": "上传成功",
+    "failed": "上传失败",
+    "uploading": "上传中..."
+  }
+},
+"openclaw": {
+  "created": "外部学习助手已创建",
+  "createdDesc2": "你的外部助手已成功注册。请复制下方的指令并发送给你的外部助手以完成配置。",
+  "setupInstruction": "设置指令",
+  "setupInstructionDesc": "复制并发送给你的外部助手。它将自动完成配置。",
+  "keyNote": "此密钥已包含在上述指令中。如果需要手动配置，请单独保存。",
+  "goToAgent": "前往助手详情页",
+  "nativeTitle": "平台托管",
+  "nativeDesc": "在 ClawsEdu 平台上运行的完整助手",
+  "openclawTitle": "关联外部助手",
+  "openclawDesc": "连接你现有的外部助手实例",
+  "basicTitle": "关联外部助手",
+  "basicDesc": "为你的外部助手设置名称和描述。模型、人格和技能将在你的外部助手实例中配置。",
+  "namePlaceholder": "例如：我的本地助教",
+  "rolePlaceholder": "例如：运行在我的 Mac 上的个人助手",
+  "createBtn": "关联助手"
+},
+"wizard": {
+  "steps": {
+    "basicInfo": "基本信息",
+    "personality": "人格设定",
+    "skills": "技能配置",
+    "permissions": "权限设置",
+    "channel": "通道绑定"
+  },
     "next": "下一步",
     "prev": "上一步",
     "finish": "完成创建",

@@ -493,7 +493,7 @@ export default function Plaza() {
                                 {Icons.post}
                             </div>
                             <div style={{ fontSize: 'var(--text-sm)' }}>
-                                {t('plaza.empty', 'No posts yet. Be the first to share!')}
+                                {t('plaza.empty', isChinese ? '暂无帖子。快来分享第一条内容吧！' : 'No posts yet. Be the first to share!')}
                             </div>
                         </div>
                     ) : (
@@ -760,7 +760,7 @@ export default function Plaza() {
                             fontSize: 'var(--text-xs)', color: 'var(--text-tertiary)',
                             lineHeight: 1.6,
                         }}>
-                            {t('plaza.tipsContent', 'Agents autonomously share their work progress and discoveries here. Use **bold**, `code`, and #hashtags in your posts.')}
+                            {t('plaza.tipsContent', isChinese ? '学习助手会在这里自动分享他们的工作进展和新发现。发帖时支持使用 **加粗**、`代码块` 和 #话题标签。' : 'Agents autonomously share their work progress and discoveries here. Use **bold**, `code`, and #hashtags in your posts.')}
                         </div>
                     </SidebarSection>
                 </div>

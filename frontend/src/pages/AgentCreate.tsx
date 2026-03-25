@@ -110,24 +110,24 @@ export default function AgentCreate() {
         return (
             <div>
                 <div className="page-header">
-                    <h1 className="page-title">{t('openclaw.created', 'External Assistant Created')}</h1>
+                    <h1 className="page-title">{t('openclaw.created', '外部助手已创建')}</h1>
                 </div>
                 <div className="bento-card" style={{ maxWidth: '640px' }}>
                     <div style={{ textAlign: 'center', padding: '20px 0' }}>
                         <div style={{ fontSize: '32px', marginBottom: '12px' }}>&#x2713;</div>
                         <h3 style={{ fontWeight: 600, marginBottom: '8px' }}>{agent.name}</h3>
                         <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginBottom: '24px' }}>
-                            {t('openclaw.createdDesc2', 'Your external agent has been registered. Copy the instruction below and send it to your external agent to complete the setup.')}
+                            {t('openclaw.createdDesc2', '你的外部助手已成功注册。请复制下方的指令并发送给你的外部助手以完成配置。')}
                         </p>
                     </div>
 
                     {/* Setup Instruction — single block to send to external agent */}
                     <div style={{ marginBottom: '20px' }}>
                         <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, marginBottom: '6px', color: 'var(--text-secondary)' }}>
-                            {t('openclaw.setupInstruction', 'Setup Instruction')}
+                            {t('openclaw.setupInstruction', '设置指令')}
                         </label>
                         <p style={{ fontSize: '12px', color: 'var(--text-tertiary)', marginBottom: '8px' }}>
-                            {t('openclaw.setupInstructionDesc', 'Copy and send this to your external agent. It will configure itself automatically.')}
+                            {t('openclaw.setupInstructionDesc', '复制并发送给你的外部助手。它将自动完成配置。')}
                         </p>
                         <div style={{ position: 'relative' }}>
                             <pre style={{
@@ -237,8 +237,8 @@ For humans, the message is delivered via their available channel (e.g. Feishu).`
                     background: agentType === 'native' ? 'var(--accent-subtle)' : 'var(--bg-elevated)',
                 }}
             >
-                <div style={{ fontWeight: 600, fontSize: '14px', marginBottom: '4px' }}>{t('openclaw.nativeTitle', 'Platform Hosted')}</div>
-                <div style={{ fontSize: '12px', color: 'var(--text-tertiary)' }}>{t('openclaw.nativeDesc', 'Full agent running on ClawsEdu platform')}</div>
+                <div style={{ fontWeight: 600, fontSize: '14px', marginBottom: '4px' }}>{t('openclaw.nativeTitle', '平台托管')}</div>
+                <div style={{ fontSize: '12px', color: 'var(--text-tertiary)' }}>{t('openclaw.nativeDesc', '在 ClawsEdu 平台上运行的完整助手')}</div>
             </div>
             <div
                 onClick={() => { setAgentType('openclaw'); setStep(0); }}
@@ -253,9 +253,9 @@ For humans, the message is delivered via their available channel (e.g. Feishu).`
                     fontSize: '10px', padding: '2px 6px', borderRadius: '4px',
                     background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', color: '#fff', fontWeight: 600,
                     letterSpacing: '0.5px',
-                }}>Lab</span>
-                <div style={{ fontWeight: 600, fontSize: '14px', marginBottom: '4px' }}>{t('openclaw.openclawTitle', 'Link External Assistant')}</div>
-                <div style={{ fontSize: '12px', color: 'var(--text-tertiary)' }}>{t('openclaw.openclawDesc', 'Connect your existing external agent')}</div>
+                }}>{t('common.lab', '实验室')}</span>
+                <div style={{ fontWeight: 600, fontSize: '14px', marginBottom: '4px' }}>{t('openclaw.openclawTitle', '关联外部助手')}</div>
+                <div style={{ fontSize: '12px', color: 'var(--text-tertiary)' }}>{t('openclaw.openclawDesc', '连接你现有的外部助手实例')}</div>
             </div>
         </div>
     );
@@ -278,27 +278,27 @@ For humans, the message is delivered via their available channel (e.g. Feishu).`
 
                 <div className="bento-card" style={{ maxWidth: '640px' }}>
                     <h3 style={{ marginBottom: '6px', fontWeight: 600, fontSize: '15px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        {t('openclaw.basicTitle', 'Link External Assistant')}
+                        {t('openclaw.basicTitle', '关联外部助手')}
                         <span style={{
                             fontSize: '10px', padding: '2px 6px', borderRadius: '4px',
                             background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', color: '#fff', fontWeight: 600,
                         }}>Lab</span>
                     </h3>
                     <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginBottom: '20px' }}>
-                        {t('openclaw.basicDesc', 'Give your external agent a name and description. The LLM model, personality, and skills are configured on your external agent instance.')}
+                        {t('openclaw.basicDesc', '为你的外部助手设置名称和描述。模型、人格和技能将在你的外部助手实例中配置。')}
                     </p>
 
                     <div className="form-group">
                         <label className="form-label">{t('agent.fields.name')} *</label>
                         <input className="form-input" value={form.name}
                             onChange={(e) => setForm({ ...form, name: e.target.value })}
-                            placeholder={t('openclaw.namePlaceholder', 'e.g. My Study Bot')} autoFocus />
+                            placeholder={t('openclaw.namePlaceholder', '例如：我的本地助教')} autoFocus />
                     </div>
                     <div className="form-group">
                         <label className="form-label">{t('agent.fields.role')}</label>
                         <input className="form-input" value={form.role_description}
                             onChange={(e) => setForm({ ...form, role_description: e.target.value })}
-                            placeholder={t('openclaw.rolePlaceholder', 'e.g. Personal assistant running on my Mac')} />
+                            placeholder={t('openclaw.rolePlaceholder', '例如：运行在我的 Mac 上的个人助手')} />
                     </div>
 
                     {/* Permissions */}
@@ -331,7 +331,7 @@ For humans, the message is delivered via their available channel (e.g. Feishu).`
                         <button className="btn btn-secondary" onClick={() => navigate('/')}>{t('common.cancel')}</button>
                         <button className="btn btn-primary" onClick={handleFinish}
                             disabled={createMutation.isPending || !form.name}>
-                            {createMutation.isPending ? t('common.loading') : t('openclaw.createBtn', 'Link Agent')}
+                            {createMutation.isPending ? t('common.loading') : t('openclaw.createBtn', '关联助手')}
                         </button>
                     </div>
                 </div>
@@ -411,7 +411,7 @@ For humans, the message is delivered via their available channel (e.g. Feishu).`
                                     {templates.map((tmpl: any) => (
                                         <div
                                             key={tmpl.id}
-                                            onClick={() => setForm({ ...form, template_id: tmpl.id, role_description: tmpl.description })}
+                                            onClick={() => setForm({ ...form, template_id: tmpl.id, name: form.name || tmpl.name, role_description: tmpl.description })}
                                             style={{
                                                 padding: '12px', borderRadius: '8px', cursor: 'pointer', textAlign: 'center',
                                                 border: `1px solid ${form.template_id === tmpl.id ? 'var(--accent-primary)' : 'var(--border-default)'}`,

@@ -38,7 +38,7 @@ const getCategoryLabels = (t: any): Record<string, string> => ({
 });
 
 function ToolsManager({ agentId, canManage = false }: { agentId: string; canManage?: boolean }) {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [tools, setTools] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
     const [configTool, setConfigTool] = useState<any | null>(null);
@@ -137,10 +137,10 @@ function ToolsManager({ agentId, canManage = false }: { agentId: string; canMana
                                                 <span style={{ fontSize: '10px', background: 'var(--primary)', color: '#fff', borderRadius: '4px', padding: '1px 5px' }}>MCP</span>
                                             )}
                                             {tool.type === 'builtin' && (
-                                                <span style={{ fontSize: '10px', background: 'var(--bg-tertiary)', color: 'var(--text-secondary)', borderRadius: '4px', padding: '1px 5px' }}>Built-in</span>
+                                                <span style={{ fontSize: '10px', background: 'var(--bg-tertiary)', color: 'var(--text-secondary)', borderRadius: '4px', padding: '1px 5px' }}>{i18n.language?.startsWith('zh') ? '内置' : 'Built-in'}</span>
                                             )}
                                             {hasAgentOverride && (
-                                                <span style={{ fontSize: '10px', background: 'rgba(99,102,241,0.15)', color: 'var(--accent-color)', borderRadius: '4px', padding: '1px 5px' }}>Configured</span>
+                                                <span style={{ fontSize: '10px', background: 'rgba(99,102,241,0.15)', color: 'var(--accent-color)', borderRadius: '4px', padding: '1px 5px' }}>{i18n.language?.startsWith('zh') ? '已配置' : 'Configured'}</span>
                                             )}
                                         </div>
                                         <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
@@ -153,14 +153,15 @@ function ToolsManager({ agentId, canManage = false }: { agentId: string; canMana
                                     {canManage && hasConfig && (
                                         <button
                                             onClick={() => openConfig(tool)}
+                                            className="btn-tool-config"
                                             style={{ background: 'none', border: '1px solid var(--border-subtle)', borderRadius: '6px', padding: '3px 8px', fontSize: '11px', cursor: 'pointer', color: 'var(--text-secondary)' }}
-                                            title={t('enterprise.tools.configure', 'Configure per-agent settings')}
-                                        >⚙️ {t('enterprise.tools.configure', 'Config')}</button>
+                                            title={t('enterprise.tools.configure', '配置此助手的独立设置')}
+                                        >⚙️ {t('enterprise.tools.configure', '配置')}</button>
                                     )}
                                     {canManage && tool.source === 'user_installed' && tool.agent_tool_id && (
                                         <button
                                             onClick={async () => {
-                                                if (!confirm(t('agent.tools.confirmDelete', `Remove "${tool.display_name}" from this agent?`))) return;
+                                                if (!confirm(t('agent.tools.confirmDelete', '确定从该助手中移除工具？'))) return;
                                                 setDeletingToolId(tool.id);
                                                 try {
                                                     const token = localStorage.getItem('token');
@@ -267,7 +268,7 @@ function ToolsManager({ agentId, canManage = false }: { agentId: string; canMana
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                             <div>
                                 <h3 style={{ margin: 0 }}>⚙️ {configTool.display_name}</h3>
-                                <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginTop: '2px' }}>Per-agent configuration (overrides global defaults)</div>
+                                <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginTop: '2px' }}>{i18n.language?.startsWith('zh') ? '学习助手独立配置（覆盖全局默认值）' : 'Per-agent configuration (overrides global defaults)'}</div>
                             </div>
                             <button onClick={() => setConfigTool(null)} style={{ background: 'none', border: 'none', fontSize: '18px', cursor: 'pointer', color: 'var(--text-secondary)' }}>✕</button>
                         </div>
@@ -288,13 +289,13 @@ function ToolsManager({ agentId, canManage = false }: { agentId: string; canMana
                                                 {field.label}
                                                 {configTool.global_config?.[field.key] && (
                                                     <span style={{ fontWeight: 400, color: 'var(--text-tertiary)', marginLeft: '4px' }}>
-                                                        (global: {String(configTool.global_config[field.key]).slice(0, 20)}{String(configTool.global_config[field.key]).length > 20 ? '…' : ''})
+                                                        ({i18n.language?.startsWith('zh') ? '全局' : 'global'}: {String(configTool.global_config[field.key]).slice(0, 20)}{String(configTool.global_config[field.key]).length > 20 ? '…' : ''})
                                                     </span>
                                                 )}
                                             </label>
                                             {field.type === 'password' ? (
                                                 <>
-                                                <input type="password" className="form-input" value={configData[field.key] ?? ''} placeholder={field.placeholder || 'Leave blank to use global default'} onChange={e => setConfigData(p => ({ ...p, [field.key]: e.target.value }))} />
+                                                <input type="password" className="form-input" value={configData[field.key] ?? ''} placeholder={field.placeholder || (i18n.language?.startsWith('zh') ? '留空以使用全局默认值' : 'Leave blank to use global default')} onChange={e => setConfigData(p => ({ ...p, [field.key]: e.target.value }))} />
                                                 {/* Per-provider help text for auth_code */}
                                                 {field.key === 'auth_code' && (() => {
                                                     const providerField = configTool.config_schema?.fields?.find((f: any) => f.key === 'email_provider');
@@ -305,7 +306,7 @@ function ToolsManager({ agentId, canManage = false }: { agentId: string; canMana
                                                         <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginTop: '4px', lineHeight: '1.5' }}>
                                                             {providerOption.help_text}
                                                             {providerOption.help_url && (
-                                                                <> &middot; <a href={providerOption.help_url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-primary)', textDecoration: 'none' }}>Setup guide</a></>
+                                                                <> &middot; <a href={providerOption.help_url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-primary)', textDecoration: 'none' }}>{i18n.language?.startsWith('zh') ? '设置指南' : 'Setup guide'}</a></>
                                                             )}
                                                         </div>
                                                     );
@@ -318,7 +319,7 @@ function ToolsManager({ agentId, canManage = false }: { agentId: string; canMana
                                             ) : field.type === 'number' ? (
                                                 <input type="number" className="form-input" value={configData[field.key] ?? field.default ?? ''} placeholder={field.placeholder || ''} min={field.min} max={field.max} onChange={e => setConfigData(p => ({ ...p, [field.key]: e.target.value ? Number(e.target.value) : '' }))} />
                                             ) : (
-                                                <input type="text" className="form-input" value={configData[field.key] ?? ''} placeholder={field.placeholder || 'Leave blank to use global default'} onChange={e => setConfigData(p => ({ ...p, [field.key]: e.target.value }))} />
+                                                <input type="text" className="form-input" value={configData[field.key] ?? ''} placeholder={field.placeholder || (i18n.language?.startsWith('zh') ? '留空以使用全局默认值' : 'Leave blank to use global default')} onChange={e => setConfigData(p => ({ ...p, [field.key]: e.target.value }))} />
                                             )}
                                         </div>
                                     ))}
@@ -361,7 +362,7 @@ function ToolsManager({ agentId, canManage = false }: { agentId: string; canMana
                             </div>
                         ) : (
                             <div>
-                                <label style={{ display: 'block', fontSize: '12px', fontWeight: 500, marginBottom: '4px' }}>Config JSON (Agent Override)</label>
+                                <label style={{ display: 'block', fontSize: '12px', fontWeight: 500, marginBottom: '4px' }}>{i18n.language?.startsWith('zh') ? '配置 JSON（学习助手独立配置）' : 'Config JSON (Agent Override)'}</label>
                                 <textarea
                                     className="form-input"
                                     value={configJson}
@@ -370,7 +371,7 @@ function ToolsManager({ agentId, canManage = false }: { agentId: string; canMana
                                     placeholder='{}'
                                 />
                                 <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginTop: '4px' }}>
-                                    Global default: <code style={{ fontSize: '10px' }}>{JSON.stringify(configTool.global_config || {}).slice(0, 80)}</code>
+                                    {i18n.language?.startsWith('zh') ? '全局默认：' : 'Global default: '}<code style={{ fontSize: '10px' }}>{JSON.stringify(configTool.global_config || {}).slice(0, 80)}</code>
                                 </div>
                             </div>
                         )}
@@ -381,10 +382,10 @@ function ToolsManager({ agentId, canManage = false }: { agentId: string; canMana
                                     const token = localStorage.getItem('token');
                                     await fetch(`/api/tools/agents/${agentId}/tool-config/${configTool.id}`, { method: 'PUT', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify({ config: {} }) });
                                     setConfigTool(null); loadTools();
-                                }}>Reset to Global</button>
+                                }}>{i18n.language?.startsWith('zh') ? '恢复全局默认' : 'Reset to Global'}</button>
                             )}
-                            <button className="btn btn-secondary" onClick={() => setConfigTool(null)}>Cancel</button>
-                            <button className="btn btn-primary" onClick={saveConfig} disabled={configSaving}>{configSaving ? 'Saving…' : 'Save'}</button>
+                            <button className="btn btn-secondary" onClick={() => setConfigTool(null)}>{t('common.cancel', 'Cancel')}</button>
+                            <button className="btn btn-primary" onClick={saveConfig} disabled={configSaving}>{configSaving ? (i18n.language?.startsWith('zh') ? '保存中...' : 'Saving…') : t('common.save', 'Save')}</button>
                         </div>
                     </div>
                 </div>
@@ -2630,12 +2631,12 @@ function AgentDetailInner() {
                                             style={{ display: 'flex', alignItems: 'center', gap: '6px', whiteSpace: 'nowrap' }}
                                             onClick={() => setShowImportSkillModal(true)}
                                         >
-                                            📦 {t('agent.skills.importPreset', 'Import from Presets')}
+                                            📦 {t('agent.skills.importPreset', '从预设导入')}
                                         </button>
                                     </div>
                                     <div style={{ marginTop: '8px', padding: '10px 14px', background: 'var(--bg-secondary)', borderRadius: '8px', fontSize: '12px', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                                        <strong>📁 Skill Format:</strong><br />
-                                        • <code>skills/my-skill/SKILL.md</code> — {t('agent.skills.folderFormat', 'Each skill is a folder with a SKILL.md file and optional auxiliary files (scripts/, examples/)')}
+                                        <strong>📁 {i18n.language?.startsWith('zh') ? '技能格式' : 'Skill Format'}:</strong><br />
+                                        • <code>skills/my-skill/SKILL.md</code> — {t('agent.skills.folderFormat', '每个技能是一个包含 SKILL.md 的文件夹')}
                                     </div>
                                 </div>
                                 <FileBrowser api={adapter} rootPath="skills" features={{ newFile: true, edit: true, delete: true, newFolder: true, upload: true, directoryNavigation: true }} title={t('agent.skills.skillFiles')} />
@@ -2645,17 +2646,17 @@ function AgentDetailInner() {
                                     <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.5)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={() => setShowImportSkillModal(false)}>
                                         <div onClick={e => e.stopPropagation()} style={{ background: 'var(--bg-primary)', borderRadius: '12px', padding: '24px', maxWidth: '600px', width: '90%', maxHeight: '70vh', display: 'flex', flexDirection: 'column', boxShadow: '0 20px 60px rgba(0,0,0,0.3)' }}>
                                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-                                                <h3>📦 {t('agent.skills.importPreset', 'Import from Presets')}</h3>
+                                                <h3>📦 {t('agent.skills.importPreset', '从预设导入')}</h3>
                                                 <button onClick={() => setShowImportSkillModal(false)} style={{ background: 'none', border: 'none', fontSize: '18px', cursor: 'pointer', color: 'var(--text-secondary)', padding: '4px 8px' }}>✕</button>
                                             </div>
                                             <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '0 0 16px' }}>
-                                                {t('agent.skills.importDesc', 'Select a preset skill to import into this agent. All skill files will be copied to the agent\'s skills folder.')}
+                                                {t('agent.skills.importDesc', '选择一个预设技能导入到此助手。')}
                                             </p>
                                             <div style={{ flex: 1, overflowY: 'auto' }}>
                                                 {!globalSkillsForImport ? (
-                                                    <div style={{ textAlign: 'center', padding: '24px', color: 'var(--text-tertiary)' }}>Loading...</div>
+                                                    <div style={{ textAlign: 'center', padding: '24px', color: 'var(--text-tertiary)' }}>{i18n.language?.startsWith('zh') ? '加载中...' : 'Loading...'}</div>
                                                 ) : globalSkillsForImport.length === 0 ? (
-                                                    <div style={{ textAlign: 'center', padding: '24px', color: 'var(--text-tertiary)' }}>No preset skills available</div>
+                                                    <div style={{ textAlign: 'center', padding: '24px', color: 'var(--text-tertiary)' }}>{i18n.language?.startsWith('zh') ? '暂无可用预设技能' : 'No preset skills available'}</div>
                                                 ) : (
                                                     globalSkillsForImport.map((skill: any) => (
                                                         <div
@@ -2678,7 +2679,7 @@ function AgentDetailInner() {
                                                                     </div>
                                                                     <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginTop: '2px' }}>
                                                                         📁 {skill.folder_name}
-                                                                        {skill.is_default && <span style={{ marginLeft: '8px', color: 'var(--accent-primary)', fontWeight: 600 }}>✓ Default</span>}
+                                                                        {skill.is_default && <span style={{ marginLeft: '8px', color: 'var(--accent-primary)', fontWeight: 600 }}>✓ {i18n.language?.startsWith('zh') ? '默认' : 'Default'}</span>}
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -2690,17 +2691,17 @@ function AgentDetailInner() {
                                                                     setImportingSkillId(skill.id);
                                                                     try {
                                                                         const res = await fileApi.importSkill(id!, skill.id);
-                                                                        alert(`✅ Imported "${skill.name}" (${res.files_written} files)`);
+                                                                        alert(i18n.language?.startsWith('zh') ? `✅ 已导入 "${skill.name}" (${res.files_written} 个文件)` : `✅ Imported "${skill.name}" (${res.files_written} files)`);
                                                                         queryClient.invalidateQueries({ queryKey: ['files', id, 'skills'] });
                                                                         setShowImportSkillModal(false);
                                                                     } catch (err: any) {
-                                                                        alert(`❌ Import failed: ${err?.message || err}`);
+                                                                        alert(i18n.language?.startsWith('zh') ? `❌ 导入失败: ${err?.message || err}` : `❌ Import failed: ${err?.message || err}`);
                                                                     } finally {
                                                                         setImportingSkillId(null);
                                                                     }
                                                                 }}
                                                             >
-                                                                {importingSkillId === skill.id ? '⏳ ...' : '⬇️ Import'}
+                                                                {importingSkillId === skill.id ? (i18n.language?.startsWith('zh') ? '⏳ 导入中...' : '⏳ ...') : (i18n.language?.startsWith('zh') ? '⬇️ 导入' : '⬇️ Import')}
                                                             </button>
                                                         </div>
                                                     ))
